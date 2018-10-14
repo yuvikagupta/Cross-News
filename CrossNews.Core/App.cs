@@ -13,7 +13,7 @@ namespace CrossNews.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<HomeViewModel>();
+            RegisterAppStart<MainViewModel>();
         }
     }
 }
