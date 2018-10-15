@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CrossNews.Core.Model.Api;
 
 namespace CrossNews.Core.Services
 {
     public interface INewsService
     {
         Task<List<int>> GetStoryListAsync(StoryKind kind);
-        void EnqueueItems(List<int> ids);
+        IEnumerable<Item> EnqueueItems(List<int> ids);
     }
 
     public enum StoryKind

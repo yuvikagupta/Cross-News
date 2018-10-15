@@ -32,6 +32,7 @@ namespace CrossNews.Core.ViewModels
             _messenger = messenger;
             _dialog = dialog;
             ShowStoryCommand = new MvxAsyncCommand<StoryItemViewModel>(OnShowStory);
+            ReloadCommand = new MvxAsyncCommand(LoadTopStories);
 
             _fillerToken = messenger.Subscribe<NewsItemMessage<Item>>(OnItemReceived);
             _debugToken = messenger.SubscribeOnMainThread<DebugMessage>(msg => _dialog.AlertAsync("DEBUG", msg.Text));
@@ -53,9 +54,12 @@ namespace CrossNews.Core.ViewModels
         public override async Task Initialize()
         {
             await base.Initialize();
+            await LoadTopStories();
+        }
 
+        private async Task LoadTopStories()
+        {
             var ids = await _news.GetStoryListAsync(StoryKind.Top);
-
             var items = ids.Select((x, i) => new StoryItemViewModel(x, i)).ToList();
 
             Stories = new ObservableCollection<StoryItemViewModel>(items);
@@ -65,7 +69,6 @@ namespace CrossNews.Core.ViewModels
         }
 
         private ObservableCollection<StoryItemViewModel> _stories;
-
         public ObservableCollection<StoryItemViewModel> Stories
         {
             get => _stories;
@@ -73,5 +76,6 @@ namespace CrossNews.Core.ViewModels
         }
 
         public ICommand ShowStoryCommand { get; }
+        public ICommand ReloadCommand { get; }
     }
 }

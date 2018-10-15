@@ -14,11 +14,13 @@ namespace CrossNews.Core.Services
     public class NewsService : INewsService
     {
         private readonly IMvxMessenger _messenger;
+        private readonly ICacheService _cache;
         private readonly FirebaseClient _client;
 
-        public NewsService(IMvxMessenger messenger)
+        public NewsService(IMvxMessenger messenger, ICacheService cache)
         {
             _messenger = messenger;
+            _cache = cache;
             var config = new FirebaseConfig
             {
                 BasePath = "https://hacker-news.firebaseio.com/v0/"
@@ -37,26 +39,41 @@ namespace CrossNews.Core.Services
             return items;
         }
 
-        public void EnqueueItems(List<int> ids)
+        public IEnumerable<Item> EnqueueItems(List<int> ids)
         {
             var stopwatch = Stopwatch.StartNew();
-            var tasks = ids.Select(id => _client.GetAsync($"item/{id}")
+
+            var (items, misses) = _cache.GetCachedItems(ids);
+
+            var newItems = new List<Item>();
+
+            var tasks = misses.Select(id => _client.GetAsync($"item/{id}")
                 .ContinueWith(task =>
                 {
                     if (task.Status != TaskStatus.RanToCompletion)
                         return;
                     var storyItem = task.Result.ResultAs<Item>();
+                    newItems.Add(storyItem);
                     var msg = new NewsItemMessage<Item>(this, storyItem);
                     _messenger.Publish(msg);
                 }));
 
+            foreach (var item in items)
+            {
+                var msg = new NewsItemMessage<Item>(this, item);
+                _messenger.Publish(msg);
+            }
+
             Task.WhenAll(tasks).ContinueWith(x =>
             {
+                _cache.AddItemsToCache(newItems);
                 stopwatch.Stop();
                 var ms = stopwatch.ElapsedMilliseconds;
                 var msg = new DebugMessage(this, $"All completed in {ms} ms");
                 _messenger.Publish(msg);
             });
+
+            return items;
         }
 
         private string GetStorylistTag(StoryKind kind)

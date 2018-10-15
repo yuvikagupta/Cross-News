@@ -4,10 +4,14 @@
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
-	<mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView
+  <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Reload"
+    local:MvxBind="Click ReloadCommand" />
+  <mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		local:MvxBind="ItemsSource Stories; ItemClick ShowStoryCommand"
-		local:MvxItemTemplate="@layout/story_list_item">
-	</mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView>
+		local:MvxItemTemplate="@layout/story_list_item" />
 </LinearLayout>
