@@ -5,6 +5,7 @@ resources:
   - repository: public
     type: github
     name: kipters/CrossNews
+    endpoint: kipters
 
 variables:
   ANDROID_NDK_PATH: 'C:\Microsoft\AndroidNDK64\android-ndk-r15c'
