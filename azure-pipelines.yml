@@ -1,24 +1,40 @@
-# Xamarin.Android
-# Build a Xamarin.Android project.
-# Add steps that test, sign, and distribute an app, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/xamarin
+name: $(BuildID)
 
-pool:
-  vmImage: 'vs2017-win2016'
+resources:
+  repositories:
+  - repository: public
+    type: github
+    name: kipters/CrossNews
 
 variables:
+  ANDROID_NDK_PATH: 'C:\Microsoft\AndroidNDK64\android-ndk-r15c'
   buildConfiguration: 'Release'
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
+  solution: 'CrossNews.sln'
 
-steps:
-- task: NuGetToolInstaller@0
+trigger:
+  - master
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '**/*.sln'
+jobs:
+- job: android
+  displayName: Android build
+  continueOnError: true
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.4.1'
+    inputs:
+      versionSpec: 4.4.1
+  
+  - task: NugetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      restoreSolution: $(solution)
 
-- task: XamarinAndroid@1
-  inputs:
-    projectFile: '**/*droid*.csproj'
-    outputDirectory: '$(outputDirectory)'
-    configuration: '$(buildConfiguration)'
+  - task: XamarinAndroid@1
+    displayName: 'Build Xamarin.Android project'
+    inputs:
+      projectFile: 'CrossNews.Droid\CrossNews.Droid.csproj'
+      outputDirectory: $(outputDirectory)
+      configuration: $(buildConfiguration)
