@@ -17,10 +17,10 @@ trigger:
 
 jobs:
 - job: android
-  displayName: Android build
+  displayName: iOS build
   continueOnError: true
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'macOS-10.13'
   steps:
   - task: NuGetToolInstaller@0
     displayName: 'Use NuGet 4.4.1'
