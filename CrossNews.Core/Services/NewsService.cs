@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using CrossNews.Core.Messages;
 using CrossNews.Core.Model.Api;
-using FireSharp;
-using FireSharp.Config;
 using MvvmCross.Plugin.Messenger;
+using Newtonsoft.Json;
 
 namespace CrossNews.Core.Services
 {
@@ -15,26 +15,21 @@ namespace CrossNews.Core.Services
     {
         private readonly IMvxMessenger _messenger;
         private readonly ICacheService _cache;
-        private readonly FirebaseClient _client;
+        private readonly HttpClient _client;
 
         public NewsService(IMvxMessenger messenger, ICacheService cache)
         {
             _messenger = messenger;
             _cache = cache;
-            var config = new FirebaseConfig
-            {
-                BasePath = "https://hacker-news.firebaseio.com/v0/"
-            };
-
-            _client = new FirebaseClient(config);
+            _client = new HttpClient { BaseAddress = new Uri("https://hacker-news.firebaseio.com/v0/") };
         }
 
         public async Task<List<int>> GetStoryListAsync(StoryKind kind)
         {
             var listTag = GetStorylistTag(kind);
 
-            var response = await _client.GetAsync(listTag);
-            var items = response.ResultAs<List<int>>();
+            var response = await _client.GetStringAsync(listTag + ".json");
+            var items = JsonConvert.DeserializeObject<List<int>>(response);
 
             return items;
         }
@@ -47,12 +42,12 @@ namespace CrossNews.Core.Services
 
             var newItems = new List<Item>();
 
-            var tasks = misses.Select(id => _client.GetAsync($"item/{id}")
+            var tasks = misses.Select(id => _client.GetStringAsync($"item/{id}.json")
                 .ContinueWith(task =>
                 {
                     if (task.Status != TaskStatus.RanToCompletion)
                         return;
-                    var storyItem = task.Result.ResultAs<Item>();
+                    var storyItem = JsonConvert.DeserializeObject<Item>(task.Result);
                     newItems.Add(storyItem);
                     var msg = new NewsItemMessage<Item>(this, storyItem);
                     _messenger.Publish(msg);
