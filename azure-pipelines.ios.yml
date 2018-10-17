@@ -32,15 +32,23 @@ jobs:
     inputs:
       restoreSolution: $(solution)
 
+  - task: InstallAppleCertificate@2
+    displayName: 'Install signing certificate'
+    inputs:
+      certSecureFile: '2c7dd83e-916e-4028-a960-0c354593dbc2'
+      certPwd: $(P12CertPassword),
+      deleteCert: true
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install provisioning profile'
+    inputs:
+      provProfileSecureFile: '01e38389-9330-4d6c-a5b2-cd2cac6b95fe'
+
   - task: XamariniOS@2
     displayName: 'Build iOS app'
     inputs:
       solutionFile: $(solution)
       configuration: $(buildconfiguration) 
-      packageApp: false
-      buildForSimulator: true
-      #signingIdentity: # Optional
-      #signingProvisioningProfileID: # Optional
 
   - task: CopyFiles@2
     displayName: 'Copy files to staging directory'
