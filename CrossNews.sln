@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossNews.Droid", "CrossNew
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossNews.Ios", "CrossNews.Ios\CrossNews.Ios.csproj", "{E83DE99B-2723-48C6-9ACB-0BED28C4F689}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossNews.Core.Tests", "CrossNews.Core.Tests\CrossNews.Core.Tests.csproj", "{40EF880D-60B1-4829-9FCA-A8CA592987EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,18 @@ Global
 		{E83DE99B-2723-48C6-9ACB-0BED28C4F689}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{E83DE99B-2723-48C6-9ACB-0BED28C4F689}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{E83DE99B-2723-48C6-9ACB-0BED28C4F689}.Debug|iPhone.Build.0 = Debug|iPhone
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Release|iPhone.Build.0 = Release|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{40EF880D-60B1-4829-9FCA-A8CA592987EB}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
