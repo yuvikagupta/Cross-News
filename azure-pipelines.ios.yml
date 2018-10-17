@@ -16,7 +16,7 @@ trigger:
   - master
 
 jobs:
-- job: android
+- job: ios
   displayName: iOS build
   continueOnError: true
   pool:
@@ -45,7 +45,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy files to staging directory'
     inputs:
-      sourceFolder: $(outputDirectory)
+      sourceFolder: $(build.binariesDirectory)
       contents: '**/*.ipa'
       targetFolder: '$(build.artifactStagingDirectory)'
 
