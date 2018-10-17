@@ -8,11 +8,9 @@ resources:
     endpoint: kipters
 
 variables:
-  #ANDROID_NDK_HOME: 'C:\Microsoft\AndroidNDK64\android-ndk-r15c'
   buildConfiguration: 'Release'
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
   solution: 'CrossNews.sln'
-  androidProject: 'CrossNews.Droid/CrossNews.Droid.csproj'
 
 trigger:
   - master
@@ -24,9 +22,6 @@ jobs:
   pool:
     vmImage: 'vs2017-win2016'
   steps:
-  - powershell: 'Get-ChildItem env:*'
-    displayName: 'List all environment variables'
-
   - task: NuGetToolInstaller@0
     displayName: 'Use NuGet 4.4.1'
     inputs:
@@ -37,19 +32,21 @@ jobs:
     inputs:
       restoreSolution: $(solution)
 
-  - task: XamarinAndroid@1
-    displayName: 'Build Xamarin.Android project'
+  - task: XamariniOS@2
+    displayName: 'Build iOS app'
     inputs:
-      projectFile: $(androidProject)
-      outputDirectory: $(outputDirectory)
-      configuration: $(buildConfiguration)
-      msbuildArguments: '/p:AndroidNdkDirectory="C:\Microsoft\AndroidNDK64\android-ndk-r15c"'
+      solutionFile: $(solution)
+      configuration: $(buildconfiguration) 
+      packageApp: false
+      buildForSimulator: true
+      #signingIdentity: # Optional
+      #signingProvisioningProfileID: # Optional
 
   - task: CopyFiles@2
     displayName: 'Copy files to staging directory'
     inputs:
       sourceFolder: $(outputDirectory)
-      contents: '**/*.apk'
+      contents: '**/*.ipa'
       targetFolder: '$(build.artifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1

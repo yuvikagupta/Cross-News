@@ -1,0 +1,52 @@
+name: $(BuildID)
+
+resources:
+  repositories:
+  - repository: public
+    type: github
+    name: kipters/CrossNews
+    endpoint: kipters
+
+variables:
+  buildConfiguration: 'Release'
+  outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
+  solution: 'CrossNews.sln'
+  androidProject: 'CrossNews.Droid/CrossNews.Droid.csproj'
+
+trigger:
+  - master
+
+jobs:
+- job: android
+  displayName: Android build
+  continueOnError: true
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.4.1'
+    inputs:
+      versionSpec: 4.4.1
+  
+  - task: NugetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      restoreSolution: $(solution)
+
+  - task: XamarinAndroid@1
+    displayName: 'Build Xamarin.Android project'
+    inputs:
+      projectFile: $(androidProject)
+      outputDirectory: $(outputDirectory)
+      configuration: $(buildConfiguration)
+      msbuildArguments: '/p:AndroidNdkDirectory="C:\Microsoft\AndroidNDK64\android-ndk-r15c"'
+
+  - task: CopyFiles@2
+    displayName: 'Copy files to staging directory'
+    inputs:
+      sourceFolder: $(outputDirectory)
+      contents: '**/*.apk'
+      targetFolder: '$(build.artifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Build Artifacts'
