@@ -41,6 +41,15 @@ jobs:
       configuration: $(buildConfiguration)
       msbuildArguments: '/p:AndroidNdkDirectory="C:\Microsoft\AndroidNDK64\android-ndk-r15c"'
 
+  - task: AndroidSigning@3
+    displayName: 'Sign APK'
+    inputs:
+      apkFiles: '**/*.apk'
+      keystoreFile: 'd9da74c1-05e2-426c-9cce-d9380736df8b'
+      keystorePass: $(KeystorePass)
+      keystoreAlias: 'crossnews'
+      keyPass: $(KeyPass)
+
   - task: CopyFiles@2
     displayName: 'Copy files to staging directory'
     inputs:
