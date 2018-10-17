@@ -51,9 +51,8 @@ namespace CrossNews.Core.ViewModels
 
         private Task OnShowStory(StoryItemViewModel item) => _navigation.Navigate(typeof(StoryViewModel), item.Story);
 
-        public override async Task Initialize()
+        public override async void ViewCreated()
         {
-            await base.Initialize();
             await LoadTopStories();
         }
 
@@ -62,18 +61,15 @@ namespace CrossNews.Core.ViewModels
             var ids = await _news.GetStoryListAsync(StoryKind.Top);
             var items = ids.Select((x, i) => new StoryItemViewModel(x, i)).ToList();
 
-            Stories = new ObservableCollection<StoryItemViewModel>(items);
+            _stories.Clear();
+            _stories.AddRange(items);
             _storyLookup = items.ToDictionary(i => i.Id);
 
             _news.EnqueueItems(ids.ToList());
         }
 
-        private ObservableCollection<StoryItemViewModel> _stories;
-        public ObservableCollection<StoryItemViewModel> Stories
-        {
-            get => _stories;
-            set => SetProperty(ref _stories, value);
-        }
+        private readonly MvxObservableCollection<StoryItemViewModel> _stories = new MvxObservableCollection<StoryItemViewModel>();
+        public ObservableCollection<StoryItemViewModel> Stories => _stories;
 
         public ICommand ShowStoryCommand { get; }
         public ICommand ReloadCommand { get; }
