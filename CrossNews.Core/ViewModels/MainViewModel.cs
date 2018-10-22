@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,7 +45,7 @@ namespace CrossNews.Core.ViewModels
             _storyLookup.Remove(id);
         }
 
-        private Task OnShowStory(StoryItemViewModel item) => _navigation.Navigate(typeof(StoryViewModel), item.Story);
+        private Task OnShowStory(StoryItemViewModel item) => _navigation.Navigate<StoryViewModel, IStory>(item.Story);
 
         public override async void ViewCreated()
         {

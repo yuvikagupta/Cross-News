@@ -16,11 +16,14 @@ namespace CrossNews.Core.ViewModels
             Title = $"Item {id}";
         }
 
+        public bool Filled { get; private set; }
+
         public void Fill(IStory item)
         {
             Story = item;
             Title = item.Title;
             Score = item.Score;
+            Filled = true;
         }
 
         private int _score;
