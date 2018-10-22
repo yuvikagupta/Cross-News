@@ -64,8 +64,7 @@ namespace CrossNews.Core.Services
                 _cache.AddItemsToCache(newItems);
                 stopwatch.Stop();
                 var ms = stopwatch.ElapsedMilliseconds;
-                var msg = new DebugMessage(this, $"All completed in {ms} ms");
-                _messenger.Publish(msg);
+                Debug.WriteLine("Queue completed in {0} ms", ms);
             });
 
             return items;

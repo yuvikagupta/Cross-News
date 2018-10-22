@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,24 +18,20 @@ namespace CrossNews.Core.ViewModels
         private readonly IMvxNavigationService _navigation;
         private readonly IMvxMessenger _messenger;
         private readonly INewsService _news;
-        private readonly IDialogService _dialog;
         private readonly MvxSubscriptionToken _fillerToken;
-        private readonly MvxSubscriptionToken _debugToken;
 
         private Dictionary<int, StoryItemViewModel> _storyLookup;
 
 
-        public MainViewModel(IMvxNavigationService navigation, IMvxMessenger messenger, INewsService news, IDialogService dialog)
+        public MainViewModel(IMvxNavigationService navigation, IMvxMessenger messenger, INewsService news)
         {
             _news = news;
             _navigation = navigation;
             _messenger = messenger;
-            _dialog = dialog;
             ShowStoryCommand = new MvxAsyncCommand<StoryItemViewModel>(OnShowStory);
             ReloadCommand = new MvxAsyncCommand(LoadTopStories);
 
             _fillerToken = messenger.Subscribe<NewsItemMessage<Item>>(OnItemReceived);
-            _debugToken = messenger.SubscribeOnMainThread<DebugMessage>(msg => _dialog.AlertAsync("DEBUG", msg.Text));
         }
 
         private void OnItemReceived(NewsItemMessage<Item> msg)
