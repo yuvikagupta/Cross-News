@@ -11,7 +11,15 @@ namespace CrossNews.Droid
     {
         protected override void InitializeFirstChance()
         {
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDialogService, DroidDialogService>();
+            var ioc = Mvx.IoCProvider;
+            ioc.LazyConstructAndRegisterSingleton<IDialogService, DroidDialogService>();
+        }
+
+        protected override void InitializeLastChance()
+        {
+            base.InitializeLastChance();
+            var ioc = Mvx.IoCProvider;
+            ioc.ConstructAndRegisterSingleton<IReachabilityService, DroidReachabilityService>();
         }
     }
 }
