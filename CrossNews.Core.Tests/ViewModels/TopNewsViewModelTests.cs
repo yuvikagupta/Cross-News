@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -143,10 +143,44 @@ namespace CrossNews.Core.Tests.ViewModels
             Assert.All(sut.Stories, vm => Assert.Equal($"Item {vm.Id}", vm.Title));
         }
 
+        [Fact] // Temporary
+        public async Task ShouldOnlyShowStories()
+        {
+            var item = new Item { Id = 99, Type = ItemType.Job};
+            IStory paramItem = null;
+            var navigation = Navigation;
+            navigation.Setup(n => n.Navigate<StoryViewModel, IStory>(item, It.IsAny<IMvxBundle>(), It.IsAny<CancellationToken>()))
+                .Callback((IStory param, IMvxBundle bundle, CancellationToken token) => paramItem = param)
+                .ReturnsAsync(true)
+                .Verifiable();
+
+            var news = News;
+            news.Setup(n => n.GetStoryListAsync(It.IsAny<StoryKind>()))
+                .ReturnsAsync(new List<int> { item.Id });
+
+            Action<NewsItemMessage<Item>> callback = null;
+            var messenger = new Mock<IMvxMessenger>();
+            messenger.Setup(m => m.Subscribe(It.IsAny<Action<NewsItemMessage<Item>>>(), It.IsAny<MvxReference>(), It.IsAny<string>()))
+                .Callback((Action<NewsItemMessage<Item>> action, MvxReference mvxref, string tag) => callback = action)
+                .Returns(new MvxSubscriptionToken(Guid.NewGuid(), () => { }));
+
+            var sut = new TopNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object);
+
+            await sut.Initialize();
+            sut.ViewCreated();
+
+            callback(new NewsItemMessage<Item>(news.Object, item));
+
+            sut.ShowStoryCommand.TryExecute(sut.Stories[0]);
+
+            Assert.False(sut.ShowStoryCommand.CanExecute(sut.Stories[0]));
+            navigation.Verify(n => n.Navigate<StoryViewModel, IStory>(It.IsAny<IStory>(), It.IsAny<MvxBundle>(), It.IsAny<CancellationToken>()), Times.Never);
+        }
+
         [Fact]
         public async Task TappingAnItemShowsIt()
         {
-            var item = new Item {Id = 99};
+            var item = new Item {Id = 99, Type = ItemType.Story};
             IStory paramItem = null;
             var navigation = Navigation;
             navigation.Setup(n => n.Navigate<StoryViewModel, IStory>(item, It.IsAny<IMvxBundle>(), It.IsAny<CancellationToken>()))

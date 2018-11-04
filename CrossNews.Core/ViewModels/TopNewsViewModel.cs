@@ -39,7 +39,7 @@ namespace CrossNews.Core.ViewModels
 
             _stories = new MvxObservableCollection<StoryItemViewModel>();
 
-            ShowStoryCommand = new MvxAsyncCommand<StoryItemViewModel>(OnShowStory, item => item.Filled);
+            ShowStoryCommand = new MvxAsyncCommand<StoryItemViewModel>(OnShowStory, item => item.Filled && item.Story.Type == ItemType.Story);
             RefreshCommand = new MvxAsyncCommand(LoadTopStories);
 
             _fillerToken = messenger.Subscribe<NewsItemMessage<Item>>(OnItemReceived);
