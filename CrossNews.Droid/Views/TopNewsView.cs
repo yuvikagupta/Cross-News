@@ -5,13 +5,13 @@ using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace CrossNews.Droid.Views
 {
-    [MvxActivityPresentation]
-    [Activity]
-    public class HomeView : MvxAppCompatActivity<HomeViewModel>
+    [Activity, MvxActivityPresentation]
+    public class TopNewsView : MvxAppCompatActivity<TopNewsViewModel>
     {
         protected override void OnViewModelSet()
         {
-            SetContentView(Resource.Layout.home_view);
+            base.OnViewModelSet();
+            SetContentView(Resource.Layout.main_view);
         }
     }
 }
