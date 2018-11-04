@@ -1,12 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CrossNews.Core.Messages;
 using CrossNews.Core.Model.Api;
 using CrossNews.Core.Services;
+using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
@@ -39,10 +42,10 @@ namespace CrossNews.Core.ViewModels
             ShowStoryCommand = new MvxAsyncCommand<StoryItemViewModel>(OnShowStory, item => item.Filled);
             RefreshCommand = new MvxAsyncCommand(LoadTopStories);
 
-            _fillerToken = messenger.Subscribe<NewsItemMessage<IStory>>(OnItemReceived);
+            _fillerToken = messenger.Subscribe<NewsItemMessage<Item>>(OnItemReceived);
         }
 
-        private void OnItemReceived(NewsItemMessage<IStory> msg)
+        private void OnItemReceived(NewsItemMessage<Item> msg)
         {
             var id = msg.Data.Id;
 

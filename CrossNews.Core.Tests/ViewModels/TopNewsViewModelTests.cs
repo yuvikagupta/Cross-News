@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -111,10 +111,10 @@ namespace CrossNews.Core.Tests.ViewModels
         [Fact]
         public async Task FillItemsAsTheyCome()
         {
-            Action<NewsItemMessage<IStory>> callback = null;
+            Action<NewsItemMessage<Item>> callback = null;
             var messenger = new Mock<IMvxMessenger>();
-            messenger.Setup(m => m.Subscribe(It.IsAny<Action<NewsItemMessage<IStory>>>(), It.IsAny<MvxReference>(), It.IsAny<string>()))
-                .Callback((Action<NewsItemMessage<IStory>> action, MvxReference mvxref, string tag) => callback = action)
+            messenger.Setup(m => m.Subscribe(It.IsAny<Action<NewsItemMessage<Item>>>(), It.IsAny<MvxReference>(), It.IsAny<string>()))
+                .Callback((Action<NewsItemMessage<Item>> action, MvxReference mvxref, string tag) => callback = action)
                 .Returns(new MvxSubscriptionToken(Guid.NewGuid(), () => { }))
                 .Verifiable();
 
@@ -129,7 +129,7 @@ namespace CrossNews.Core.Tests.ViewModels
             await sut.Initialize();
             sut.ViewCreated();
 
-            messenger.Verify(m => m.Subscribe(It.IsAny<Action<NewsItemMessage<IStory>>>(), It.IsAny<MvxReference>(), It.IsAny<string>()), Times.Once);
+            messenger.Verify(m => m.Subscribe(It.IsAny<Action<NewsItemMessage<Item>>>(), It.IsAny<MvxReference>(), It.IsAny<string>()), Times.Once);
             news.Verify(n => n.GetStoryListAsync(It.IsAny<StoryKind>()), Times.Once);
             Assert.True(sut.LoadingTask.IsCompleted);
             Assert.NotNull(callback);
@@ -137,7 +137,7 @@ namespace CrossNews.Core.Tests.ViewModels
             foreach (var item in items)
             {
                 var story = new Item {Id = item, Title = $"Item {item}"};
-                callback(new NewsItemMessage<IStory>(news.Object, story));
+                callback(new NewsItemMessage<Item>(news.Object, story));
             }
 
             Assert.All(sut.Stories, vm => Assert.Equal($"Item {vm.Id}", vm.Title));
@@ -158,10 +158,10 @@ namespace CrossNews.Core.Tests.ViewModels
             news.Setup(n => n.GetStoryListAsync(It.IsAny<StoryKind>()))
                 .ReturnsAsync(new List<int> {item.Id});
 
-            Action<NewsItemMessage<IStory>> callback = null;
+            Action<NewsItemMessage<Item>> callback = null;
             var messenger = new Mock<IMvxMessenger>();
-            messenger.Setup(m => m.Subscribe(It.IsAny<Action<NewsItemMessage<IStory>>>(), It.IsAny<MvxReference>(), It.IsAny<string>()))
-                .Callback((Action<NewsItemMessage<IStory>> action, MvxReference mvxref, string tag) => callback = action)
+            messenger.Setup(m => m.Subscribe(It.IsAny<Action<NewsItemMessage<Item>>>(), It.IsAny<MvxReference>(), It.IsAny<string>()))
+                .Callback((Action<NewsItemMessage<Item>> action, MvxReference mvxref, string tag) => callback = action)
                 .Returns(new MvxSubscriptionToken(Guid.NewGuid(), () => { }));
 
             var sut = new TopNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object);
@@ -169,7 +169,7 @@ namespace CrossNews.Core.Tests.ViewModels
             await sut.Initialize();
             sut.ViewCreated();
 
-            callback(new NewsItemMessage<IStory>(news.Object, item));
+            callback(new NewsItemMessage<Item>(news.Object, item));
 
             sut.ShowStoryCommand.TryExecute(sut.Stories[0]);
 
