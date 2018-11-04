@@ -53,7 +53,8 @@ namespace CrossNews.Core.Services
                     _messenger.Publish(msg);
                 }));
 
-            foreach (var item in items)
+            var itemList = items.ToList();
+            foreach (var item in itemList)
             {
                 var msg = new NewsItemMessage<Item>(this, item);
                 _messenger.Publish(msg);
@@ -67,7 +68,7 @@ namespace CrossNews.Core.Services
                 Debug.WriteLine("Queue completed in {0} ms", ms);
             });
 
-            return items;
+            return itemList;
         }
 
         private string GetStorylistTag(StoryKind kind)
