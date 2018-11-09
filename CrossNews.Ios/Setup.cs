@@ -14,5 +14,11 @@ namespace CrossNews.Ios
         {
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDialogService, IosDialogService>();
         }
+
+        protected override void InitializeLastChance()
+        {
+            base.InitializeLastChance();
+            Mvx.IoCProvider.ConstructAndRegisterSingleton<IReachabilityService, IosReachabilityService>();
+        }
     }
 }
