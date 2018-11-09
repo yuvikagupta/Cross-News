@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "CrossNews.Core.Tests"
+		},
+		{
+			"path": "CrossNews.Core"
+		}
+	],
+	"settings": {}
+}

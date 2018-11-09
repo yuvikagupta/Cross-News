@@ -8,5 +8,6 @@ namespace CrossNews.Core.Model.Api
         List<int> Kids { get; }
         int Score { get; }
         string Title { get; }
+        string Url { get; }
     }
 }
