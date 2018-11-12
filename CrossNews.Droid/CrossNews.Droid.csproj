@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -71,6 +71,9 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\StoryView.cs" />
     <Compile Include="Views\TopNewsView.cs" />
+    <Compile Include="Services\DroidBrowserService.cs" />
+    <Compile Include="Services\DroidShareService.cs" />
+    <Compile Include="Common\LineDividerItemDecoration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -105,6 +108,8 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
+    <AndroidResource Include="Resources\drawable\line_divider.xml" />
+    <AndroidResource Include="Resources\layout\story_view.axml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MvvmCross">
@@ -142,9 +147,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
+    <Folder Include="Resources\drawable\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\main_view.xml">
+    <AndroidResource Include="Resources\layout\stories_view.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\story_list_item.xml" />

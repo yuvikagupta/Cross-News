@@ -1,15 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:local="http://schemas.android.com/apk/res-auto"
-  android:layout_width="match_parent" 
-  android:layout_height="wrap_content"
-  android:orientation="vertical">
-  <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" 
-    local:MvxBind="Text Index" />
-  <TextView
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    local:MvxBind="Text Title" />
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/layout_margin"
+    android:paddingVertical="@dimen/layout_verticalMargin">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:maxLines="1"
+        local:MvxBind="Text Title"
+        android:textSize="16sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        local:MvxBind="Text 'Posted by ' + Author + ' | ' + Score + ' points | ' + CommentsCount + ' comments'"
+        android:textSize="14sp" />
 </LinearLayout>
