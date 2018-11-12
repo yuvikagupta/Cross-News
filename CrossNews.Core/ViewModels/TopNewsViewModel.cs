@@ -60,6 +60,7 @@ namespace CrossNews.Core.ViewModels
         {
             async Task LoadAsync()
             {
+                IsBusy = true;
                 var ids = await _news.GetStoryListAsync(StoryKind.Top);
                 var items = ids.Select((x, i) => new StoryItemViewModel(x, i)).ToList();
 
@@ -68,6 +69,7 @@ namespace CrossNews.Core.ViewModels
                 _storyLookup = items.ToDictionary(i => i.Id);
 
                 _news.EnqueueItems(ids.ToList());
+                IsBusy = false;
             }
 
             var notifyTask = _reachability.IsConnectionAvailable
@@ -93,6 +95,13 @@ namespace CrossNews.Core.ViewModels
         {
             get => _loadingTask;
             private set => SetProperty(ref _loadingTask, value);
+        }
+
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => SetProperty(ref _isBusy, value);
         }
 
         public ICommand ShowStoryCommand { get; }

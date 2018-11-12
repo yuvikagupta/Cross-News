@@ -13,16 +13,22 @@ namespace CrossNews.Core.ViewModels
         {
             Id = id;
             Index = index;
-            Title = $"Item {id}";
         }
 
-        public bool Filled { get; private set; }
+        private bool _filled;
+        public bool Filled
+        {
+            get => _filled;
+            private set => SetProperty(ref _filled, value);
+        }
 
         public void Fill(IStory item)
         {
             Story = item;
             Title = item.Title;
             Score = item.Score;
+            Author = item.By;
+            CommentsCount = item.Descendants;
             Filled = true;
         }
 
@@ -30,14 +36,28 @@ namespace CrossNews.Core.ViewModels
         public int Score
         {
             get => _score;
-            set => SetProperty(ref _score, value);
+            private set => SetProperty(ref _score, value);
         }
 
         private string _title;
         public string Title
         {
             get => _title;
-            set => SetProperty(ref _title, value);
+            private set => SetProperty(ref _title, value);
+        }
+
+        private string _author;
+        public string Author
+        {
+            get => _author;
+            private set => SetProperty(ref _author, value);
+        }
+
+        private int _commentsCount;
+        public int CommentsCount
+        {
+            get => _commentsCount;
+            private set => SetProperty(ref _commentsCount, value);
         }
     }
 }

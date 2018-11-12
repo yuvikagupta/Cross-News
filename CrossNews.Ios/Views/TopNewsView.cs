@@ -19,17 +19,42 @@ namespace CrossNews.Ios.Views
 
             Title = "Top news";
 
-            var source = new MvxStandardTableViewSource(TableView, UITableViewCellStyle.Value2, (NSString)"stdCell", "DetailText Title; TitleText Score");
-            TableView.Source = source;
-            var refreshButton = new UIBarButtonItem(UIBarButtonSystemItem.Refresh);
+#pragma warning disable XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
+            if (UIDevice.CurrentDevice.CheckSystemVersion(11, 0))
+                NavigationController.NavigationBar.PrefersLargeTitles = true;
+#pragma warning restore XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
 
-            NavigationItem.RightBarButtonItem = refreshButton;
+            var source = new MvxStandardTableViewSource(TableView, UITableViewCellStyle.Subtitle, (NSString)"stdCell", 
+                "TitleText Title; DetailText 'Posted by ' + Author + ' | ' + Score + ' points | ' + CommentsCount + ' comments'");
+
+            TableView.Source = source;
+
+            var refreshControl = new MvxUIRefreshControl();
 
             var set = this.CreateBindingSet<TopNewsView, TopNewsViewModel>();
 
-            set.Bind(source).To(vm => vm.Stories).OneTime();
-            set.Bind(refreshButton).To(vm => vm.RefreshCommand).OneTime();
+            set.Bind(source)
+               .To(vm => vm.Stories)
+               .OneTime();
+
+            set.Bind(source)
+               .For(s => s.SelectionChangedCommand)
+               .To(vm => vm.ShowStoryCommand)
+               .OneTime();
+
+            set.Bind(refreshControl)
+               .For(v => v.RefreshCommand)
+               .To(vm => vm.RefreshCommand)
+               .OneTime();
+
+            set.Bind(refreshControl)
+               .For(v => v.IsRefreshing)
+               .To(vm => vm.IsBusy)
+               .OneWay();
+
             set.Apply();
+
+            RefreshControl = refreshControl;
         }
     }
 }
