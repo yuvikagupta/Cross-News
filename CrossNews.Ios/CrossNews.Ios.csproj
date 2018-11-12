@@ -131,6 +131,10 @@
     <Compile Include="Views\TopNewsView.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
+    <Compile Include="Services\IosShareService.cs" />
+    <Compile Include="Services\IosBrowserService.cs" />
+    <Compile Include="Extensions\UIViewControllerExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrossNews.Core\CrossNews.Core.csproj">

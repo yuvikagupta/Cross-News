@@ -4,7 +4,7 @@ namespace CrossNews.Core.Services
 {
     public interface IShareService
     {
-        Task<bool> ShareLinkAsync(string title, string url);
+        Task<bool> ShareLinkAsync(string title, string url, object opaqueSource);
     }
 
 }

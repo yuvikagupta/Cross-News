@@ -23,5 +23,25 @@ namespace CrossNews.Ios.Services
 
             return tcs.Task;
         }
+
+        public Task<bool> ConfirmAsync(string title, string text, string positiveButton = null, string negativeButton = null)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            var posBtnText = positiveButton ?? "Ok";
+            var negBtnText = negativeButton ?? "Cancel";
+
+            var alert = UIAlertController.Create(title, text, UIAlertControllerStyle.Alert);
+            var okAction = UIAlertAction.Create(posBtnText, UIAlertActionStyle.Default, _ => tcs.TrySetResult(true));
+            var cancelAction = UIAlertAction.Create(posBtnText, UIAlertActionStyle.Cancel, _ => tcs.TrySetResult(false));
+
+            alert.AddAction(okAction);
+
+            UIApplication.SharedApplication
+                .KeyWindow
+                .RootViewController
+                .PresentViewController(alert, true, null);
+
+            return tcs.Task;
+        }
     }
 }

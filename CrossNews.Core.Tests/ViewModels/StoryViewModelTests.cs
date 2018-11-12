@@ -95,7 +95,7 @@ namespace CrossNews.Core.Tests.ViewModels
         {
             var share = Share;
             var fakeUrl = "https://fake-url.com";
-            share.Setup(s => s.ShareLinkAsync(It.IsAny<string>(), fakeUrl))
+            share.Setup(s => s.ShareLinkAsync(It.IsAny<string>(), fakeUrl, It.IsAny<object>()))
                 .ReturnsAsync(true)
                 .Verifiable();
 
@@ -116,7 +116,7 @@ namespace CrossNews.Core.Tests.ViewModels
         {
             var share = Share;
             var fakeTitle = "Fake Story Title";
-            share.Setup(s => s.ShareLinkAsync(fakeTitle, It.IsAny<string>()))
+            share.Setup(s => s.ShareLinkAsync(fakeTitle, It.IsAny<string>(), It.IsAny<object>()))
                 .ReturnsAsync(true)
                 .Verifiable();
 
@@ -138,7 +138,7 @@ namespace CrossNews.Core.Tests.ViewModels
             var share = Share;
             var fakeId = 999;
             var fakeUrl = $"https://news.ycombinator.com/item?id={fakeId}";
-            share.Setup(s => s.ShareLinkAsync(It.IsAny<string>(), fakeUrl))
+            share.Setup(s => s.ShareLinkAsync(It.IsAny<string>(), fakeUrl, It.IsAny<object>()))
                 .ReturnsAsync(true)
                 .Verifiable();
 
@@ -159,7 +159,7 @@ namespace CrossNews.Core.Tests.ViewModels
         {
             var share = Share;
             var fakeTitle = "Fake Story Title";
-            share.Setup(s => s.ShareLinkAsync(fakeTitle, It.IsAny<string>()))
+            share.Setup(s => s.ShareLinkAsync(fakeTitle, It.IsAny<string>(), It.IsAny<object>()))
                 .ReturnsAsync(true)
                 .Verifiable();
 

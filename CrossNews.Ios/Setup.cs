@@ -13,6 +13,8 @@ namespace CrossNews.Ios
         protected override void InitializeFirstChance()
         {
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDialogService, IosDialogService>();
+            Mvx.IoCProvider.RegisterSingleton<IBrowserService>(new IosBrowserService());
+            Mvx.IoCProvider.RegisterSingleton<IShareService>(new IosShareService());
         }
 
         protected override void InitializeLastChance()

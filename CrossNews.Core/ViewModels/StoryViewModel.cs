@@ -22,17 +22,17 @@ namespace CrossNews.Core.ViewModels
             _browser = browser;
             _dialog = dialog;
 
-            ShareStoryCommand = new MvxAsyncCommand(
-                () => _share.ShareLinkAsync(Title, StoryUrl));
-            ShareCommentsCommand = new MvxAsyncCommand(
-                () => _share.ShareLinkAsync(Title, $"https://news.ycombinator.com/item?id={_story.Id}"));
+            ShareStoryCommand = new MvxAsyncCommand<object>(
+                s => _share.ShareLinkAsync(Title, StoryUrl, s));
+            ShareCommentsCommand = new MvxAsyncCommand<object>(
+                s => _share.ShareLinkAsync(Title, $"https://news.ycombinator.com/item?id={_story.Id}", s));
             OpenInExternalBrowserCommand = new MvxAsyncCommand(
                 () => _browser.ShowInBrowserAsync(new Uri(StoryUrl), false));
         }
 
-        public override void Prepare(IStory story)
+        public override void Prepare(IStory parameter)
         {
-            _story = story;
+            _story = parameter;
         }
 
         public string Title => _story.Title;
