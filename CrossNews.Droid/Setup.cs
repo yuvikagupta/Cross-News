@@ -12,6 +12,7 @@ namespace CrossNews.Droid
         protected override void InitializeFirstChance()
         {
             var ioc = Mvx.IoCProvider;
+            ioc.RegisterSingleton<IAppService>(new DroidAppService());
             ioc.LazyConstructAndRegisterSingleton<IDialogService, DroidDialogService>();
             ioc.LazyConstructAndRegisterSingleton<IBrowserService, DroidBrowserService>();
             ioc.LazyConstructAndRegisterSingleton<IShareService, DroidShareService>();

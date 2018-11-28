@@ -1,15 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CrossNews.Core.Messages;
 using CrossNews.Core.Model.Api;
 using CrossNews.Core.Services;
-using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
@@ -36,13 +33,15 @@ namespace CrossNews.Core.ViewModels
             _messenger = messenger;
             _news = news;
             _reachability = reachability;
-
             _stories = new MvxObservableCollection<StoryItemViewModel>();
 
             ShowStoryCommand = new MvxAsyncCommand<StoryItemViewModel>(OnShowStory, item => item.Filled && item.Story.Type == ItemType.Story);
             RefreshCommand = new MvxAsyncCommand(LoadTopStories);
 
+            ShowSettingsCommand = new MvxAsyncCommand(() => _navigation.Navigate<SettingsViewModel>());
+
             _fillerToken = messenger.Subscribe<NewsItemMessage<Item>>(OnItemReceived);
+
         }
 
         private void OnItemReceived(NewsItemMessage<Item> msg)
@@ -105,7 +104,7 @@ namespace CrossNews.Core.ViewModels
         }
 
         public ICommand ShowStoryCommand { get; }
-
         public ICommand RefreshCommand { get; }
+        public ICommand ShowSettingsCommand { get; }
     }
 }

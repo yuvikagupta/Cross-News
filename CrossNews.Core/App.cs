@@ -1,4 +1,6 @@
-﻿using CrossNews.Core.ViewModels;
+﻿using CrossNews.Core.Services;
+using CrossNews.Core.ViewModels;
+using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 
@@ -8,10 +10,13 @@ namespace CrossNews.Core
     {
         public override void Initialize()
         {
-            CreatableTypes()
-                .EndingWith("Service")
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
+            var ioc = Mvx.IoCProvider;
+
+            ioc.RegisterSingleton<IPlatformLicenseList>(new DummyPlatformLicenseList());
+            ioc.RegisterSingleton<IPlatformFeatureOverrides>(new DummyPlatformOverrides());
+            ioc.LazyConstructAndRegisterSingleton<IFeatureStore, FeatureStoreService>();
+            ioc.RegisterSingleton<ICacheService>(new InMemoryCacheService());
+            ioc.LazyConstructAndRegisterSingleton<INewsService, NewsService>();
 
             RegisterAppStart<TopNewsViewModel>();
         }

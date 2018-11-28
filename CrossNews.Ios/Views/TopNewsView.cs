@@ -25,13 +25,23 @@ namespace CrossNews.Ios.Views
 #pragma warning restore XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
 
             var source = new MvxStandardTableViewSource(TableView, UITableViewCellStyle.Subtitle, (NSString)"stdCell", 
-                "TitleText Title; DetailText 'Posted by ' + Author + ' | ' + Score + ' points | ' + CommentsCount + ' comments'");
+                "TitleText Title; DetailText 'Posted by ' + Author + ' • ' + Score + ' points • ' + CommentsCount + ' comments'");
 
             TableView.Source = source;
 
             var refreshControl = new MvxUIRefreshControl();
 
+#pragma warning disable XI0001 // Notifies you with advices on how to use Apple APIs
+            var settingsIcon = UIImage.FromBundle("SettingsIcon");
+            var settingsButton = new UIBarButtonItem { Image = settingsIcon };
+            NavigationItem.RightBarButtonItem = settingsButton;
+#pragma warning restore XI0001 // Notifies you with advices on how to use Apple APIs
+
             var set = this.CreateBindingSet<TopNewsView, TopNewsViewModel>();
+
+            set.Bind(settingsButton)
+               .To(vm => vm.ShowSettingsCommand)
+               .OneTime();
 
             set.Bind(source)
                .To(vm => vm.Stories)

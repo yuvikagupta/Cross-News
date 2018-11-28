@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using CrossNews.Core.Services;
-using Foundation;
+using SafariServices;
 using UIKit;
 
 namespace CrossNews.Ios.Services
@@ -10,10 +10,9 @@ namespace CrossNews.Ios.Services
     {
         public Task<bool> ShowInBrowserAsync(Uri uri, bool preferInternal = true)
         {
-            if (preferInternal)
-                return ShowSafariViewController(uri);
-            else
-                return LaunchSafari(uri);
+            return preferInternal 
+                ? ShowSafariViewController(uri) 
+                : LaunchSafari(uri);
         }
 
         private Task<bool> LaunchSafari(Uri uri)
@@ -36,7 +35,14 @@ namespace CrossNews.Ios.Services
 
         private Task<bool> ShowSafariViewController(Uri uri)
         {
-            throw new NotImplementedException();
+            var safari = new SFSafariViewController(uri);
+            // Probably a bad idea
+            UIApplication.SharedApplication
+                .KeyWindow
+                .RootViewController
+                .PresentViewController(safari, true, null);
+
+            return Task.FromResult(true);
         }
     }
 }

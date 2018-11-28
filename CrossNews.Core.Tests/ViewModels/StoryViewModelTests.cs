@@ -212,7 +212,7 @@ namespace CrossNews.Core.Tests.ViewModels
             await sut.HandleExternalLinkAsync(fakeUrl);
 
             dialog.Verify();
-            Assert.True(msg.Contains("kipters.net"));
+            Assert.Contains("kipters.net", msg);
         }
 
         [Fact]

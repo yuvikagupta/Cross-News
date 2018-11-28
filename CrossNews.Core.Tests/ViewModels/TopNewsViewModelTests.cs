@@ -259,5 +259,21 @@ namespace CrossNews.Core.Tests.ViewModels
             Assert.DoesNotContain(sut.Stories, vm => vm.Id == 19);
             news.Verify(n => n.GetStoryListAsync(It.IsAny<StoryKind>()), Times.Exactly(2));
         }
+
+        [Fact]
+        public void ShowSettingsCommandNavigatesToSettings()
+        {
+            var navigation = Navigation;
+            navigation
+                .Setup(n => n.Navigate<SettingsViewModel>(null, default))
+                .ReturnsAsync(true)
+                .Verifiable();
+
+            var sut = new TopNewsViewModel(navigation.Object, Messenger.Object, News.Object, Reachability.Object);
+
+            sut.ShowSettingsCommand.TryExecute();
+
+            navigation.Verify();
+        }
     }
 }

@@ -102,16 +102,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\SettingsIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\SettingsIcon.imageset\settings.pdf" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Assets.xcassets\SettingsIcon.imageset\" />
+    <Folder Include="Assets.xcassets\AppIcon.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -135,6 +137,10 @@
     <Compile Include="Services\IosBrowserService.cs" />
     <Compile Include="Extensions\UIViewControllerExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Views\SettingsView.cs" />
+    <Compile Include="Views\LicensesView.cs" />
+    <Compile Include="Services\IosPlatformLicenseList.cs" />
+    <Compile Include="Services\IosAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrossNews.Core\CrossNews.Core.csproj">
