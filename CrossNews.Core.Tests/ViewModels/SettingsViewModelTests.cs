@@ -88,7 +88,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .Verifiable();
 
             var sut = new SettingsViewModel(navigation.Object, Browser.Object, App.Object);
-            sut.ShowProjectSiteCommand.TryExecute();
+            sut.ShowLicensesCommand.TryExecute();
 
             navigation.Verify();
         }
