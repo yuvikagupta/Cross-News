@@ -22,6 +22,8 @@ namespace CrossNews.Core.ViewModels
         private readonly IReachabilityService _reachability;
         private readonly IFeatureStore _featureStore;
         private readonly IBrowserService _browser;
+        private readonly IDialogService _dialog;
+
         private readonly MvxSubscriptionToken _fillerToken;
 
         private Dictionary<int, StoryItemViewModel> _storyLookup;
@@ -31,7 +33,8 @@ namespace CrossNews.Core.ViewModels
             , INewsService news
             , IReachabilityService reachability
             , IFeatureStore featureStore
-            , IBrowserService browser)
+            , IBrowserService browser
+            , IDialogService dialog)
         {
             _navigation = navigation;
             _messenger = messenger;
@@ -39,6 +42,7 @@ namespace CrossNews.Core.ViewModels
             _reachability = reachability;
             _featureStore = featureStore;
             _browser = browser;
+            _dialog = dialog;
 
             _stories = new MvxObservableCollection<StoryItemViewModel>();
 
@@ -80,7 +84,7 @@ namespace CrossNews.Core.ViewModels
 
             var notifyTask = _reachability.IsConnectionAvailable
                 ? MvxNotifyTask.Create(LoadAsync)
-                : MvxNotifyTask.Create(Task.FromException(new Exception("Connection not available")));
+                : MvxNotifyTask.Create(_dialog.AlertAsync("Try again", "No internet connection", "OK"));
 
             LoadingTask = notifyTask;
             return notifyTask.Task;
