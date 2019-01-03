@@ -141,6 +141,8 @@
     <Compile Include="Views\LicensesView.cs" />
     <Compile Include="Services\IosPlatformLicenseList.cs" />
     <Compile Include="Services\IosAppService.cs" />
+    <Compile Include="Services\IosPlatformFeatureOverlay.cs" />
+    <Compile Include="Views\FeatureTogglesView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrossNews.Core\CrossNews.Core.csproj">

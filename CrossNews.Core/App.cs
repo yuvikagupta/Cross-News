@@ -13,7 +13,8 @@ namespace CrossNews.Core
             var ioc = Mvx.IoCProvider;
 
             ioc.RegisterSingleton<IPlatformLicenseList>(new DummyPlatformLicenseList());
-            ioc.RegisterSingleton<IPlatformFeatureOverrides>(new DummyPlatformOverrides());
+            ioc.RegisterSingleton<IFeatureProvider>(new FeatureProvider());
+            ioc.LazyConstructAndRegisterSingleton<IPlatformFeatureOverlay, DummyPlatformFeatureOverlay>();
             ioc.LazyConstructAndRegisterSingleton<IFeatureStore, FeatureStoreService>();
             ioc.RegisterSingleton<ICacheService>(new InMemoryCacheService());
             ioc.LazyConstructAndRegisterSingleton<INewsService, NewsService>();

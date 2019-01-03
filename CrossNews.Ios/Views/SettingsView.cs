@@ -3,6 +3,7 @@ using CoreGraphics;
 using CrossNews.Core.Extensions;
 using CrossNews.Core.ViewModels;
 using Foundation;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using SafariServices;
@@ -62,6 +63,17 @@ namespace CrossNews.Ios.Views
             base.ViewDidLoad();
 
             Title = "Settings";
+
+            var set = this.CreateBindingSet<SettingsView, SettingsViewModel>();
+
+            if (ViewModel.ShowOverrideUi)
+            {
+                var overrideButton = new UIBarButtonItem("Features", UIBarButtonItemStyle.Done, null);
+                set.Bind(overrideButton).To(vm => vm.ShowFeatureTogglesCommand).OneTime();
+                NavigationItem.RightBarButtonItem = overrideButton;
+            }
+
+            set.Apply();
 
             _tableView = new UITableView(CGRect.Empty, UITableViewStyle.Grouped)
             {

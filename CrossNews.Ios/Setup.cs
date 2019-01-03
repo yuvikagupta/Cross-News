@@ -21,6 +21,7 @@ namespace CrossNews.Ios
         protected override void InitializeLastChance()
         {
             base.InitializeLastChance();
+            Mvx.IoCProvider.ConstructAndRegisterSingleton<IPlatformFeatureOverlay, IosPlatformFeatureOverlay>();
             Mvx.IoCProvider.RegisterSingleton<IPlatformLicenseList>(new IosPlatformLicenseList());
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IReachabilityService, IosReachabilityService>();
         }

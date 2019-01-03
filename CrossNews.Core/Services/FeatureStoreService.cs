@@ -3,27 +3,30 @@ using static CrossNews.Core.Services.Features;
 
 namespace CrossNews.Core.Services
 {
-    public class FeatureStoreService : IFeatureStore
+    internal class FeatureStoreService : IFeatureStore
     {
         private readonly Dictionary<string, bool> _store;
 
-        public FeatureStoreService(IPlatformFeatureOverrides platformOverrides)
+        public FeatureStoreService(IFeatureProvider baseFeatures, IPlatformFeatureOverlay platformOverlay)
         {
-            _store = new Dictionary<string, bool>
-            {
-            };
+            _store = new Dictionary<string, bool>();
 
-            foreach (var pair in platformOverrides.Overrides)
+            foreach (var pair in baseFeatures.Features)
             {
                 _store[pair.Key] = pair.Value;
             }
+
+            foreach (var pair in platformOverlay.Overrides)
+            {
+                _store[pair.Key] = pair.Value;
+            }
+
+            Toggles = _store;
         }
+
+        public IReadOnlyDictionary<string, bool> Toggles { get; }
 
         public bool IsEnabled(string key) =>
             _store.TryGetValue(key, out var value) && value;
-    }
-
-    public static class Features
-    {
     }
 }

@@ -20,6 +20,8 @@ namespace CrossNews.Core.ViewModels
         private readonly IMvxMessenger _messenger;
         private readonly INewsService _news;
         private readonly IReachabilityService _reachability;
+        private readonly IFeatureStore _featureStore;
+        private readonly IBrowserService _browser;
         private readonly MvxSubscriptionToken _fillerToken;
 
         private Dictionary<int, StoryItemViewModel> _storyLookup;
@@ -27,12 +29,17 @@ namespace CrossNews.Core.ViewModels
         public TopNewsViewModel(IMvxNavigationService navigation
             , IMvxMessenger messenger
             , INewsService news
-            , IReachabilityService reachability)
+            , IReachabilityService reachability
+            , IFeatureStore featureStore
+            , IBrowserService browser)
         {
             _navigation = navigation;
             _messenger = messenger;
             _news = news;
             _reachability = reachability;
+            _featureStore = featureStore;
+            _browser = browser;
+
             _stories = new MvxObservableCollection<StoryItemViewModel>();
 
             ShowStoryCommand = new MvxAsyncCommand<StoryItemViewModel>(OnShowStory, item => item.Filled && item.Story.Type == ItemType.Story);
@@ -79,7 +86,12 @@ namespace CrossNews.Core.ViewModels
             return notifyTask.Task;
         }
 
-        private Task OnShowStory(StoryItemViewModel item) => _navigation.Navigate<StoryViewModel, IStory>(item.Story);
+        private Task OnShowStory(StoryItemViewModel item)
+        {
+            return _featureStore.IsEnabled(Features.OpenStoryInCustomBrowser)
+                ? _navigation.Navigate<StoryViewModel, IStory>(item.Story)
+                : _browser.ShowInBrowserAsync(new Uri(item.Story.Url), true);
+        }
 
         public override async void ViewCreated()
         {
@@ -100,7 +112,7 @@ namespace CrossNews.Core.ViewModels
         public bool IsBusy
         {
             get => _isBusy;
-            set => SetProperty(ref _isBusy, value);
+            private set => SetProperty(ref _isBusy, value);
         }
 
         public ICommand ShowStoryCommand { get; }

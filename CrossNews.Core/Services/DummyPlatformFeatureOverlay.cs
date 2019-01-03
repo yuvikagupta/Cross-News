@@ -2,7 +2,7 @@
 
 namespace CrossNews.Core.Services
 {
-    internal class DummyPlatformOverrides : IPlatformFeatureOverrides
+    internal class DummyPlatformFeatureOverlay : IPlatformFeatureOverlay
     {
         public IReadOnlyDictionary<string, bool> Overrides { get; } = new Dictionary<string, bool>();
     }

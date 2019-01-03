@@ -13,6 +13,7 @@ using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.ViewModels;
 using Xunit;
+using F = CrossNews.Core.Services.Features;
 
 namespace CrossNews.Core.Tests.ViewModels
 {
@@ -30,6 +31,8 @@ namespace CrossNews.Core.Tests.ViewModels
                 return mock;
             }
         }
+        private Mock<IFeatureStore> Features = new Mock<IFeatureStore>();
+        private Mock<IBrowserService> Browser = new Mock<IBrowserService>();
 
         [Fact]
         public async Task ShowErrorMessageIfNetworkIsDown()
@@ -39,7 +42,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .Returns(false)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, News.Object, reachability.Object);
+            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, News.Object, reachability.Object, Features.Object, Browser.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -61,7 +64,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(Enumerable.Range(0, 20).ToList())
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, reachability.Object);
+            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, reachability.Object, Features.Object, Browser.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -77,7 +80,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .Throws<Exception>()
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object);
+            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -96,7 +99,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(items)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object);
+            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -124,7 +127,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(items)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, messenger.Object, news.Object, Reachability.Object);
+            var sut = new TopNewsViewModel(Navigation.Object, messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -164,7 +167,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .Callback((Action<NewsItemMessage<Item>> action, MvxReference mvxref, string tag) => callback = action)
                 .Returns(new MvxSubscriptionToken(Guid.NewGuid(), () => { }));
 
-            var sut = new TopNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object);
+            var sut = new TopNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -178,7 +181,7 @@ namespace CrossNews.Core.Tests.ViewModels
         }
 
         [Fact]
-        public async Task TappingAnItemShowsIt()
+        public async Task TappingAnItemShowsItInCustomBrowser()
         {
             var item = new Item {Id = 99, Type = ItemType.Story};
             IStory paramItem = null;
@@ -198,7 +201,11 @@ namespace CrossNews.Core.Tests.ViewModels
                 .Callback((Action<NewsItemMessage<Item>> action, MvxReference mvxref, string tag) => callback = action)
                 .Returns(new MvxSubscriptionToken(Guid.NewGuid(), () => { }));
 
-            var sut = new TopNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object);
+            var features = Features;
+            features.Setup(f => f.IsEnabled(F.OpenStoryInCustomBrowser))
+                .Returns(true);
+
+            var sut = new TopNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object, features.Object, Browser.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -209,6 +216,54 @@ namespace CrossNews.Core.Tests.ViewModels
 
             navigation.Verify();
             Assert.Same(item, paramItem);
+        }
+
+        [Fact]
+        public async Task TappingAnItemShowsItInExternalBrowser()
+        {
+            var item = new Item 
+            {
+                Id = 99,
+                Type = ItemType.Story,
+                Url = "https://kipters.net"
+            };
+
+            var navigation = Navigation;
+            navigation.Setup(n => n.Navigate<StoryViewModel, IStory>(item, It.IsAny<IMvxBundle>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(true);
+
+            var news = News;
+            news.Setup(n => n.GetStoryListAsync(It.IsAny<StoryKind>()))
+                .ReturnsAsync(new List<int> {item.Id});
+
+            Action<NewsItemMessage<Item>> callback = null;
+            var messenger = new Mock<IMvxMessenger>();
+            messenger.Setup(m => m.Subscribe(It.IsAny<Action<NewsItemMessage<Item>>>(), It.IsAny<MvxReference>(), It.IsAny<string>()))
+                .Callback((Action<NewsItemMessage<Item>> action, MvxReference mvxref, string tag) => callback = action)
+                .Returns(new MvxSubscriptionToken(Guid.NewGuid(), () => { }));
+
+            var features = Features;
+            features.Setup(f => f.IsEnabled(F.OpenStoryInCustomBrowser))
+                .Returns(false);
+
+            var browser = Browser;
+            string actualUrl = null;
+            browser.Setup(b => b.ShowInBrowserAsync(It.IsAny<Uri>(), true))
+                .Callback((Uri u, bool _) => actualUrl = u.OriginalString)
+                .ReturnsAsync(true)
+                .Verifiable();
+
+            var sut = new TopNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object, features.Object, Browser.Object);
+
+            await sut.Initialize();
+            sut.ViewCreated();
+
+            callback(new NewsItemMessage<Item>(news.Object, item));
+
+            sut.ShowStoryCommand.TryExecute(sut.Stories[0]);
+
+            browser.Verify();
+            Assert.Same(item.Url, actualUrl);
         }
 
         [Fact]
@@ -223,7 +278,7 @@ namespace CrossNews.Core.Tests.ViewModels
             news.Setup(n => n.GetStoryListAsync(It.IsAny<StoryKind>()))
                 .ReturnsAsync(new List<int> {99});
 
-            var sut = new TopNewsViewModel(navigation.Object, Messenger.Object, news.Object, Reachability.Object);
+            var sut = new TopNewsViewModel(navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -244,7 +299,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(() => items)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object);
+            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -269,7 +324,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(true)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(navigation.Object, Messenger.Object, News.Object, Reachability.Object);
+            var sut = new TopNewsViewModel(navigation.Object, Messenger.Object, News.Object, Reachability.Object, Features.Object, Browser.Object);
 
             sut.ShowSettingsCommand.TryExecute();
 

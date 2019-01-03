@@ -2,7 +2,7 @@
 
 namespace CrossNews.Core.Services
 {
-    public interface IPlatformFeatureOverrides
+    public interface IPlatformFeatureOverlay
     {
         IReadOnlyDictionary<string, bool> Overrides { get; }
     }
