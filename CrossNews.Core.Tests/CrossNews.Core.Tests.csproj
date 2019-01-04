@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <LangVersion>7.2</LangVersion>
     <IsTestProject>true</IsTestProject>
     <IsPackable>false</IsPackable>
@@ -10,8 +10,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
-    <PackageReference Include="Moq" Version="4.10.0" />
-    <PackageReference Include="MvvmCross.Tests" Version="6.2.1" />
+    <PackageReference Include="Moq" Version="4.10.1" />
+    <PackageReference Include="MvvmCross.Tests" Version="6.2.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
