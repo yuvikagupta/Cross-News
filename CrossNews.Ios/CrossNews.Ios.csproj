@@ -138,6 +138,16 @@
     <ImageAsset Include="Assets.xcassets\ShowHnIcon.imageset\showhn%403x.png" />
     <ImageAsset Include="Assets.xcassets\ShowHnFilled.imageset\showhn-filled%402x.png" />
     <ImageAsset Include="Assets.xcassets\ShowHnFilled.imageset\showhn-filled%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AskHnFilled.imageset\askhn-filled.png" />
+    <ImageAsset Include="Assets.xcassets\AskHnIcon.imageset\askhn.png" />
+    <ImageAsset Include="Assets.xcassets\JobsFilled.imageset\jobs-filled.png" />
+    <ImageAsset Include="Assets.xcassets\JobsIcon.imageset\jobs.png" />
+    <ImageAsset Include="Assets.xcassets\NewFilled.imageset\new-filled.png" />
+    <ImageAsset Include="Assets.xcassets\NewIcon.imageset\new.png" />
+    <ImageAsset Include="Assets.xcassets\ShowHnFilled.imageset\showhn-filled.png" />
+    <ImageAsset Include="Assets.xcassets\ShowHnIcon.imageset\showhn.png" />
+    <ImageAsset Include="Assets.xcassets\TopNewsFilled.imageset\topnews-filled.png" />
+    <ImageAsset Include="Assets.xcassets\TopNewsIcon.imageset\topnews.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
