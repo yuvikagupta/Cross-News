@@ -37,10 +37,18 @@ namespace CrossNews.Ios.Services
         {
             var safari = new SFSafariViewController(uri);
             // Probably a bad idea
-            UIApplication.SharedApplication
+            var root = UIApplication.SharedApplication
                 .KeyWindow
-                .RootViewController
-                .PresentViewController(safari, true, null);
+                .RootViewController;
+
+            if (root.ModalViewController == null)
+            {
+                root.PresentViewController(safari, true, null);
+            }
+            else
+            {
+                root.ModalViewController.PresentViewController(safari, true, null);
+            }
 
             return Task.FromResult(true);
         }

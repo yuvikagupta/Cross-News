@@ -17,7 +17,27 @@ using F = CrossNews.Core.Services.Features;
 
 namespace CrossNews.Core.Tests.ViewModels
 {
-    public class TopNewsViewModelTests : ViewModelFixtureBase
+    internal class MockNewsViewModel : NewsViewModel
+    {
+        private StoryKind _storyKind;
+
+        public MockNewsViewModel(IMvxNavigationService navigation
+            , IMvxMessenger messenger
+            , INewsService news
+            , IReachabilityService reachability
+            , IFeatureStore featureStore
+            , IBrowserService browser
+            , IDialogService dialog) 
+            : base(navigation, messenger, news, reachability, featureStore, browser, dialog)
+        {
+            _storyKind = StoryKind.Best;
+        }
+
+        protected override StoryKind StoryKind => _storyKind;
+        public void SetStoryKind(StoryKind storyKind) => _storyKind = storyKind;
+    }
+
+    public class NewsViewModelTests : ViewModelFixtureBase
     {
         private Mock<IMvxNavigationService> Navigation => new Mock<IMvxNavigationService>();
         private Mock<IMvxMessenger> Messenger => new Mock<IMvxMessenger>();
@@ -43,7 +63,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .Returns(false)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, News.Object, reachability.Object, Features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(Navigation.Object, Messenger.Object, News.Object, reachability.Object, Features.Object, Browser.Object, Dialog.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -65,7 +85,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(Enumerable.Range(0, 20).ToList())
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, reachability.Object, Features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(Navigation.Object, Messenger.Object, news.Object, reachability.Object, Features.Object, Browser.Object, Dialog.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -81,7 +101,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .Throws<Exception>()
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -100,7 +120,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(items)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -110,6 +130,30 @@ namespace CrossNews.Core.Tests.ViewModels
             Assert.All(items, item => Assert.Contains(item, ids));
             Assert.True(sut.LoadingTask.IsCompleted);
             news.Verify(n => n.GetStoryListAsync(It.IsAny<StoryKind>()), Times.Once);
+        }
+
+        [Theory]
+        [InlineData(StoryKind.Top)] 
+        [InlineData(StoryKind.Best)]
+        [InlineData(StoryKind.New)]
+        public async Task FetchTheRightKindOfStories(StoryKind storyKind)
+        {
+            var items = Enumerable.Range(0, 20).ToList();
+            var news = News;
+            StoryKind actualStoryKind = StoryKind.Best;
+            news.Setup(n => n.GetStoryListAsync(It.IsAny<StoryKind>()))
+                .Callback((StoryKind sk) => actualStoryKind = sk)
+                .ReturnsAsync(items)
+                .Verifiable();
+
+            var sut = new MockNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
+            sut.SetStoryKind(storyKind);
+
+            await sut.Initialize();
+            sut.ViewCreated();
+
+            Assert.Equal(storyKind, actualStoryKind);
+            news.Verify(n => n.GetStoryListAsync(storyKind), Times.Once);
         }
 
         [Fact]
@@ -128,7 +172,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(items)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(Navigation.Object, messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -168,7 +212,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .Callback((Action<NewsItemMessage<Item>> action, MvxReference mvxref, string tag) => callback = action)
                 .Returns(new MvxSubscriptionToken(Guid.NewGuid(), () => { }));
 
-            var sut = new TopNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -206,7 +250,7 @@ namespace CrossNews.Core.Tests.ViewModels
             features.Setup(f => f.IsEnabled(F.OpenStoryInCustomBrowser))
                 .Returns(true);
 
-            var sut = new TopNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object, features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object, features.Object, Browser.Object, Dialog.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -254,7 +298,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(true)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object, features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(navigation.Object, messenger.Object, news.Object, Reachability.Object, features.Object, Browser.Object, Dialog.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -279,7 +323,7 @@ namespace CrossNews.Core.Tests.ViewModels
             news.Setup(n => n.GetStoryListAsync(It.IsAny<StoryKind>()))
                 .ReturnsAsync(new List<int> {99});
 
-            var sut = new TopNewsViewModel(navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -300,7 +344,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(() => items)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(Navigation.Object, Messenger.Object, news.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
 
             await sut.Initialize();
             sut.ViewCreated();
@@ -325,7 +369,7 @@ namespace CrossNews.Core.Tests.ViewModels
                 .ReturnsAsync(true)
                 .Verifiable();
 
-            var sut = new TopNewsViewModel(navigation.Object, Messenger.Object, News.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
+            var sut = new MockNewsViewModel(navigation.Object, Messenger.Object, News.Object, Reachability.Object, Features.Object, Browser.Object, Dialog.Object);
 
             sut.ShowSettingsCommand.TryExecute();
 

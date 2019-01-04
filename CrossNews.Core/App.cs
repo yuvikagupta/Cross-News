@@ -1,5 +1,4 @@
 ﻿using CrossNews.Core.Services;
-using CrossNews.Core.ViewModels;
 using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
@@ -14,12 +13,11 @@ namespace CrossNews.Core
 
             ioc.RegisterSingleton<IPlatformLicenseList>(new DummyPlatformLicenseList());
             ioc.RegisterSingleton<IFeatureProvider>(new FeatureProvider());
-            ioc.LazyConstructAndRegisterSingleton<IPlatformFeatureOverlay, DummyPlatformFeatureOverlay>();
             ioc.LazyConstructAndRegisterSingleton<IFeatureStore, FeatureStoreService>();
             ioc.RegisterSingleton<ICacheService>(new InMemoryCacheService());
             ioc.LazyConstructAndRegisterSingleton<INewsService, NewsService>();
 
-            RegisterAppStart<TopNewsViewModel>();
+            RegisterCustomAppStart<CrossNewsAppStart>();
         }
     }
 }

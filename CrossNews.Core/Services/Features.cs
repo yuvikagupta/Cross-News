@@ -12,5 +12,6 @@
 
         public const string OpenStoryInCustomBrowser = nameof(OpenStoryInCustomBrowser);
         public const string ShowOverrideUi = nameof(ShowOverrideUi);
+        public const string StoryTabPresentation = nameof(StoryTabPresentation);
     }
 }

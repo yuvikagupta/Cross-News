@@ -108,12 +108,52 @@
     <ImageAsset Include="Assets.xcassets\SettingsIcon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\SettingsIcon.imageset\settings.pdf" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\TopNewsIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\TopNewsIcon.imageset\topnews%402x.png" />
+    <ImageAsset Include="Assets.xcassets\TopNewsIcon.imageset\topnews%403x.png" />
+    <ImageAsset Include="Assets.xcassets\TopNewsFilled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\TopNewsFilled.imageset\topnews-filled%402x.png" />
+    <ImageAsset Include="Assets.xcassets\TopNewsFilled.imageset\topnews-filled%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AskHnIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AskHnFilled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\JobsIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\JobsFilled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\NewIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\NewFilled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ShowHnIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ShowHnFilled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AskHnIcon.imageset\askhn%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AskHnIcon.imageset\askhn%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AskHnFilled.imageset\askhn-filled%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AskHnFilled.imageset\askhn-filled%403x.png" />
+    <ImageAsset Include="Assets.xcassets\JobsIcon.imageset\jobs%402x.png" />
+    <ImageAsset Include="Assets.xcassets\JobsIcon.imageset\jobs%403x.png" />
+    <ImageAsset Include="Assets.xcassets\JobsFilled.imageset\jobs-filled%402x.png" />
+    <ImageAsset Include="Assets.xcassets\JobsFilled.imageset\jobs-filled%403x.png" />
+    <ImageAsset Include="Assets.xcassets\NewIcon.imageset\new%402x.png" />
+    <ImageAsset Include="Assets.xcassets\NewIcon.imageset\new%403x.png" />
+    <ImageAsset Include="Assets.xcassets\NewFilled.imageset\new-filled%402x.png" />
+    <ImageAsset Include="Assets.xcassets\NewFilled.imageset\new-filled%403x.png" />
+    <ImageAsset Include="Assets.xcassets\ShowHnIcon.imageset\showhn%402x.png" />
+    <ImageAsset Include="Assets.xcassets\ShowHnIcon.imageset\showhn%403x.png" />
+    <ImageAsset Include="Assets.xcassets\ShowHnFilled.imageset\showhn-filled%402x.png" />
+    <ImageAsset Include="Assets.xcassets\ShowHnFilled.imageset\showhn-filled%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Extensions\" />
     <Folder Include="Assets.xcassets\SettingsIcon.imageset\" />
     <Folder Include="Assets.xcassets\AppIcon.imageset\" />
+    <Folder Include="Assets.xcassets\TopNewsIcon.imageset\" />
+    <Folder Include="Assets.xcassets\TopNewsFilled.imageset\" />
+    <Folder Include="Assets.xcassets\AskHnIcon.imageset\" />
+    <Folder Include="Assets.xcassets\AskHnFilled.imageset\" />
+    <Folder Include="Assets.xcassets\JobsIcon.imageset\" />
+    <Folder Include="Assets.xcassets\JobsFilled.imageset\" />
+    <Folder Include="Assets.xcassets\NewIcon.imageset\" />
+    <Folder Include="Assets.xcassets\NewFilled.imageset\" />
+    <Folder Include="Assets.xcassets\ShowHnIcon.imageset\" />
+    <Folder Include="Assets.xcassets\ShowHnFilled.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -130,7 +170,7 @@
     <Compile Include="Services\IosDialogService.cs" />
     <Compile Include="Views\StoryView.cs" />
     <Compile Include="Services\IosReachabilityService.cs" />
-    <Compile Include="Views\TopNewsView.cs" />
+    <Compile Include="Views\NewsView.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Services\IosShareService.cs" />
@@ -143,6 +183,7 @@
     <Compile Include="Services\IosAppService.cs" />
     <Compile Include="Services\IosPlatformFeatureOverlay.cs" />
     <Compile Include="Views\FeatureTogglesView.cs" />
+    <Compile Include="Views\NewsRootView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrossNews.Core\CrossNews.Core.csproj">

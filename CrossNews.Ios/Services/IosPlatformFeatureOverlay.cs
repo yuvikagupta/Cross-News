@@ -8,7 +8,8 @@ namespace CrossNews.Ios.Services
     {
         public IReadOnlyDictionary<string, bool> Overrides { get; } = new Dictionary<string, bool>
         {
-            [OpenStoryInCustomBrowser] = false
+            [OpenStoryInCustomBrowser] = false,
+            [StoryTabPresentation] = true,
         };
     }
 }

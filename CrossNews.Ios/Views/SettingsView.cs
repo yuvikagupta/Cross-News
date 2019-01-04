@@ -3,7 +3,9 @@ using CoreGraphics;
 using CrossNews.Core.Extensions;
 using CrossNews.Core.ViewModels;
 using Foundation;
+using MvvmCross;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Navigation;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using SafariServices;
@@ -11,7 +13,7 @@ using UIKit;
 
 namespace CrossNews.Ios.Views
 {
-    [MvxChildPresentation]
+    [MvxModalPresentation(WrapInNavigationController = true)]
     public class SettingsView : MvxViewController<SettingsViewModel>
         , IUITableViewDelegate
         , IUITableViewDataSource
@@ -72,6 +74,13 @@ namespace CrossNews.Ios.Views
                 set.Bind(overrideButton).To(vm => vm.ShowFeatureTogglesCommand).OneTime();
                 NavigationItem.RightBarButtonItem = overrideButton;
             }
+            
+            var closeButton = new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s, e) =>
+            {
+                var nav = Mvx.IoCProvider.Resolve<IMvxNavigationService>();
+                nav.Close(ViewModel);
+            });
+            NavigationItem.LeftBarButtonItem = closeButton;
 
             set.Apply();
 

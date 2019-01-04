@@ -4,9 +4,9 @@ using MvvmCross.Plugin.Messenger;
 
 namespace CrossNews.Core.ViewModels
 {
-    public class TopNewsViewModel : NewsViewModel
+    public class JobsNewsViewModel : NewsViewModel
     {
-        public TopNewsViewModel(IMvxNavigationService navigation
+        public JobsNewsViewModel(IMvxNavigationService navigation
             , IMvxMessenger messenger
             , INewsService news
             , IReachabilityService reachability
@@ -17,6 +17,6 @@ namespace CrossNews.Core.ViewModels
         {
         }
 
-        protected override StoryKind StoryKind { get; } = StoryKind.Top;
+        protected override StoryKind StoryKind { get; } = StoryKind.Job;
     }
 }
