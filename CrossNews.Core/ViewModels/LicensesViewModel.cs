@@ -27,10 +27,7 @@ namespace CrossNews.Core.ViewModels
             PlatformLicenses = platformLicense.PlatformLicenses;
         }
 
-        private Task OnShowLicense(LicenseInfo obj)
-        {
-            return _browser.ShowInBrowserAsync(obj.LicenseUri, true);
-        }
+        private Task OnShowLicense(LicenseInfo obj) => _browser.ShowInBrowserAsync(obj.LicenseUri, true);
 
         public List<LicenseInfo> CoreLicenses { get; }
         public List<LicenseInfo> PlatformLicenses { get; }

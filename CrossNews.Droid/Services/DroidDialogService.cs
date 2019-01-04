@@ -11,10 +11,7 @@ namespace CrossNews.Droid.Services
     {
         private readonly IMvxAndroidCurrentTopActivity _topActivity;
 
-        public DroidDialogService(IMvxAndroidCurrentTopActivity topActivity)
-        {
-            _topActivity = topActivity;
-        }
+        public DroidDialogService(IMvxAndroidCurrentTopActivity topActivity) => _topActivity = topActivity;
 
         private Activity TopActivity => _topActivity.Activity;
 

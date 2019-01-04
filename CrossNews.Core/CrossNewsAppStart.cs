@@ -11,10 +11,7 @@ namespace CrossNews.Core
         private readonly IFeatureStore _featureStore;
 
         public CrossNewsAppStart(IMvxApplication application, IMvxNavigationService navigationService, IFeatureStore featureStore)
-            : base(application, navigationService)
-        {
-            _featureStore = featureStore;
-        }
+            : base(application, navigationService) => _featureStore = featureStore;
 
         protected override Task NavigateToFirstViewModel(object hint = null)
         {

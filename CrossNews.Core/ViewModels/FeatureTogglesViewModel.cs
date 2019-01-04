@@ -6,10 +6,7 @@ namespace CrossNews.Core.ViewModels
 {
     public class FeatureTogglesViewModel : MvxViewModel
     {
-        public FeatureTogglesViewModel(IFeatureStore features)
-        {
-            Toggles = features.Toggles;
-        }
+        public FeatureTogglesViewModel(IFeatureStore features) => Toggles = features.Toggles;
 
         public IReadOnlyDictionary<string, bool> Toggles { get; }
     }

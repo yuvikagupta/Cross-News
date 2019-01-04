@@ -40,9 +40,13 @@ namespace CrossNews.Ios.Services
             var root = UIApplication.SharedApplication.KeyWindow.RootViewController;
 
             if (root is UINavigationController nav)
+            {
                 await nav.TopViewController.PresentViewControllerAsync(vc, true);
+            }
             else
+            {
                 await root.PresentViewControllerAsync(vc, true);
+            }
 
             return true;
         }

@@ -140,7 +140,7 @@ namespace CrossNews.Core.Tests.ViewModels
         {
             var items = Enumerable.Range(0, 20).ToList();
             var news = News;
-            StoryKind actualStoryKind = StoryKind.Best;
+            var actualStoryKind = StoryKind.Best;
             news.Setup(n => n.GetStoryListAsync(It.IsAny<StoryKind>()))
                 .Callback((StoryKind sk) => actualStoryKind = sk)
                 .ReturnsAsync(items)

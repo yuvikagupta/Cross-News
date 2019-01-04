@@ -1,4 +1,3 @@
-using System;
 using Foundation;
 
 namespace CrossNews.Ios.Extensions

@@ -46,7 +46,10 @@ namespace CrossNews.Core.Services
                 .ContinueWith(task =>
                 {
                     if (task.Status != TaskStatus.RanToCompletion)
+                    {
                         return;
+                    }
+
                     var storyItem = JsonConvert.DeserializeObject<Item>(task.Result);
                     newItems.Add(storyItem);
                     var msg = new NewsItemMessage<Item>(this, storyItem);

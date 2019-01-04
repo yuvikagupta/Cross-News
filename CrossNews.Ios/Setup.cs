@@ -1,5 +1,4 @@
-﻿using System;
-using CrossNews.Core;
+﻿using CrossNews.Core;
 using CrossNews.Core.Services;
 using CrossNews.Core.ViewModels;
 using CrossNews.Ios.Services;

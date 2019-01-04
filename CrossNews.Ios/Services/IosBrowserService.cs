@@ -41,13 +41,13 @@ namespace CrossNews.Ios.Services
                 .KeyWindow
                 .RootViewController;
 
-            if (root.ModalViewController == null)
+            if (root.PresentedViewController == null)
             {
                 root.PresentViewController(safari, true, null);
             }
             else
             {
-                root.ModalViewController.PresentViewController(safari, true, null);
+                root.PresentedViewController.PresentViewController(safari, true, null);
             }
 
             return Task.FromResult(true);

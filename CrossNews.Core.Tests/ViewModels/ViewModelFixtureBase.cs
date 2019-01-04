@@ -17,7 +17,9 @@ namespace CrossNews.Core.Tests.ViewModels
             lock (InitLock)
             {
                 if (_init)
+                {
                     return;
+                }
 
                 Setup();
                 MockDispatcher = new MockDispatcher();

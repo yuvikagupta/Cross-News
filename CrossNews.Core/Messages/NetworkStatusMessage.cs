@@ -6,10 +6,7 @@ namespace CrossNews.Core.Messages
     {
         public NetworkStatus Status { get; }
 
-        public NetworkStatusMessage(object sender, NetworkStatus status) : base(sender)
-        {
-            Status = status;
-        }
+        public NetworkStatusMessage(object sender, NetworkStatus status) : base(sender) => Status = status;
     }
 
     public enum NetworkStatus

@@ -9,7 +9,9 @@ namespace CrossNews.Ios.Extensions
         {
 #pragma warning disable XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
             if (UIDevice.CurrentDevice.CheckSystemVersion(11, 0))
+            {
                 return self.View.SafeAreaLayoutGuide;
+            }
 #pragma warning restore XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
 
             var guide = new UILayoutGuide();

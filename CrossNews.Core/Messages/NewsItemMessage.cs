@@ -6,9 +6,6 @@ namespace CrossNews.Core.Messages
     {
         public T Data { get; }
 
-        public NewsItemMessage(object sender, T data) : base(sender)
-        {
-            Data = data;
-        }
+        public NewsItemMessage(object sender, T data) : base(sender) => Data = data;
     }
 }

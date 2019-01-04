@@ -6,14 +6,11 @@ using CrossNews.Core.Model.Api;
 
 namespace CrossNews.Core.Services
 {
-    class InMemoryCacheService : ICacheService
+    internal class InMemoryCacheService : ICacheService
     {
         private readonly IDictionary<int, (Item item, DateTime expiration)> _store;
 
-        public InMemoryCacheService()
-        {
-            _store = new ConcurrentDictionary<int, (Item item, DateTime expiration)>();
-        }
+        public InMemoryCacheService() => _store = new ConcurrentDictionary<int, (Item item, DateTime expiration)>();
 
         public (IEnumerable<Item> items, IEnumerable<int> misses) GetCachedItems(IEnumerable<int> ids)
         {

@@ -49,7 +49,9 @@ namespace CrossNews.Core.ViewModels
         {
             if (string.IsNullOrWhiteSpace(url) 
                 || !Uri.TryCreate(url, UriKind.Absolute, out var uri))
+            {
                 return;
+            }
 
             var title = "External link";
             var msg = $"Do you want to leave the app to visit {uri.Host}?";
@@ -57,7 +59,9 @@ namespace CrossNews.Core.ViewModels
             var confirmed = await _dialog.ConfirmAsync(title, msg, "Yes", "No");
 
             if (confirmed)
+            {
                 await _browser.ShowInBrowserAsync(uri, true);
+            }
         }
     }
 }

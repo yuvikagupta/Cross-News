@@ -24,10 +24,7 @@ namespace CrossNews.Core.Tests
             return Task.CompletedTask;
         }
 
-        public Task ExecuteOnMainThreadAsync(Func<Task> action, bool maskExceptions = true)
-        {
-            return action();
-        }
+        public Task ExecuteOnMainThreadAsync(Func<Task> action, bool maskExceptions = true) => action();
 
         public override bool IsOnMainThread { get; } = true;
 
@@ -37,9 +34,6 @@ namespace CrossNews.Core.Tests
             return Task.FromResult(true);
         }
 
-        public Task<bool> ChangePresentation(MvxPresentationHint hint)
-        {
-            throw new NotImplementedException();
-        }
+        public Task<bool> ChangePresentation(MvxPresentationHint hint) => throw new NotImplementedException();
     }
 }

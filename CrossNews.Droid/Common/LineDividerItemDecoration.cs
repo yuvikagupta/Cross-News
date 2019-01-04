@@ -10,10 +10,7 @@ namespace CrossNews.Droid.Common
     {
         private readonly Drawable _divider;
 
-        public LineDividerItemDecoration(Context context)
-        {
-            _divider = ContextCompat.GetDrawable(context, Resource.Drawable.line_divider);
-        }
+        public LineDividerItemDecoration(Context context) => _divider = ContextCompat.GetDrawable(context, Resource.Drawable.line_divider);
 
         public override void OnDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state)
         {

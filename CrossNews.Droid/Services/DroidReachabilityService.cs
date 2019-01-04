@@ -41,7 +41,9 @@ namespace CrossNews.Droid.Services
             set
             {
                 if (value == _lastStatus)
+                {
                     return;
+                }
 
                 var msg = new NetworkStatusMessage(this, value);
                 _messenger.Publish(msg);
@@ -65,9 +67,15 @@ namespace CrossNews.Droid.Services
                 NetworkStatus GetStatus()
                 {
                     if (intent.HasExtra(ConnectivityManager.ExtraIsFailover))
+                    {
                         return NetworkStatus.Connected;
+                    }
+
                     if (intent.HasExtra(ConnectivityManager.ExtraNoConnectivity))
+                    {
                         return NetworkStatus.Disconnected;
+                    }
+
 #pragma warning disable CS0618 // Type or member is obsolete
                     if (intent.HasExtra(ConnectivityManager.ExtraNetworkInfo))
                     {
@@ -89,10 +97,7 @@ namespace CrossNews.Droid.Services
         {
             private readonly DroidReachabilityService _parent;
 
-            public ConnectionCallback(DroidReachabilityService parent)
-            {
-                _parent = parent;
-            }
+            public ConnectionCallback(DroidReachabilityService parent) => _parent = parent;
 
             public override void OnAvailable(Network network) => _parent.Status = NetworkStatus.Connected;
             public override void OnLosing(Network network, int maxMsToLive) => _parent.Status = NetworkStatus.Reconnecting;

@@ -27,7 +27,9 @@ namespace CrossNews.Ios.Views
             base.ViewWillAppear(animated);
 
             if (ViewModel == null || _loaded)
+            {
                 return;
+            }
 
             _loaded = true;
             ViewModel.ShowInitialViewModelsCommand.TryExecute();
@@ -37,12 +39,11 @@ namespace CrossNews.Ios.Views
         {
             base.SetTitleAndTabBarItem(viewController, attribute);
             if (string.IsNullOrEmpty(Title))
+            {
                 Title = attribute.TabName;
+            }
         }
 
-        public override void ItemSelected(UITabBar tabbar, UITabBarItem item)
-        {
-            Title = item.Title;
-        }
+        public override void ItemSelected(UITabBar tabbar, UITabBarItem item) => Title = item.Title;
     }
 }

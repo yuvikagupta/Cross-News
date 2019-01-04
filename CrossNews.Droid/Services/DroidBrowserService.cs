@@ -10,10 +10,7 @@ namespace CrossNews.Droid.Services
     {
         private readonly IMvxAndroidCurrentTopActivity _topActivity;
 
-        public DroidBrowserService(IMvxAndroidCurrentTopActivity topActivity)
-        {
-            _topActivity = topActivity;
-        }
+        public DroidBrowserService(IMvxAndroidCurrentTopActivity topActivity) => _topActivity = topActivity;
 
         public Task<bool> ShowInBrowserAsync(Uri uri, bool preferInternal = true)
         {

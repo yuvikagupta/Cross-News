@@ -64,7 +64,9 @@ namespace CrossNews.Core.ViewModels
             await base.Initialize();
 
             if (TabPresentation)
+            {
                 await LoadStories();
+            }
         }
 
         public override async void ViewCreated()
@@ -72,7 +74,9 @@ namespace CrossNews.Core.ViewModels
             base.ViewCreated();
 
             if (!TabPresentation)
+            {
                 await LoadStories();
+            }
         }
 
         private void OnItemReceived(NewsItemMessage<Item> msg)
@@ -80,7 +84,9 @@ namespace CrossNews.Core.ViewModels
             var id = msg.Data.Id;
 
             if (!_storyLookup.TryGetValue(id, out var wrapper))
+            {
                 return;
+            }
 
             wrapper.Fill(msg.Data);
             _storyLookup.Remove(id);

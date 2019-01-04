@@ -23,38 +23,44 @@ namespace CrossNews.Ios.Views
             var title = GetTitle(request.ViewModelType);
             var iconPrefix = GetIconPrefix(request.ViewModelType);
 
-            if (features.IsEnabled(Features.StoryTabPresentation))
-            {
-                return new MvxTabPresentationAttribute
+            return features.IsEnabled(Features.StoryTabPresentation)
+                ? new MvxTabPresentationAttribute
                 {
                     TabName = title,
                     WrapInNavigationController = false,
                     TabIconName = $"{iconPrefix}Icon",
                     TabSelectedIconName = $"{iconPrefix}Filled"
+                }
+                : (MvxBasePresentationAttribute)new MvxRootPresentationAttribute
+                {
+                    WrapInNavigationController = true
                 };
-            }
-
-            return new MvxRootPresentationAttribute
-            {
-                WrapInNavigationController = true
-            };
-
             string GetIconPrefix(Type viewmodelType)
             {
                 if (viewmodelType == typeof(AskNewsViewModel))
+                {
                     return "AskHn";
+                }
 
                 if (viewmodelType == typeof(JobsNewsViewModel))
+                {
                     return "Jobs";
+                }
 
                 if (viewmodelType == typeof(RecentNewsViewModel))
+                {
                     return "New";
+                }
 
                 if (viewmodelType == typeof(ShowNewsViewModel))
+                {
                     return "ShowHn";
+                }
 
                 if (viewmodelType == typeof(TopNewsViewModel))
+                {
                     return "TopNews";
+                }
 
                 throw new ArgumentOutOfRangeException(nameof(viewmodelType), "Invalid news kind");
             }
@@ -64,19 +70,29 @@ namespace CrossNews.Ios.Views
         private string GetTitle(Type viewmodelType)
         {
             if (viewmodelType == typeof(AskNewsViewModel))
+            {
                 return "Ask HN";
+            }
 
             if (viewmodelType == typeof(JobsNewsViewModel))
+            {
                 return "Jobs";
+            }
 
             if (viewmodelType == typeof(RecentNewsViewModel))
+            {
                 return "New";
+            }
 
             if (viewmodelType == typeof(ShowNewsViewModel))
+            {
                 return "Show HN";
+            }
 
             if (viewmodelType == typeof(TopNewsViewModel))
+            {
                 return "Top News";
+            }
 
             throw new ArgumentOutOfRangeException(nameof(viewmodelType), "Invalid news kind");
         }
@@ -90,10 +106,12 @@ namespace CrossNews.Ios.Views
 
 #pragma warning disable XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
             if (UIDevice.CurrentDevice.CheckSystemVersion(11, 0))
+            {
                 NavigationController.NavigationBar.PrefersLargeTitles = true;
+            }
 #pragma warning restore XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
 
-            var source = new MvxStandardTableViewSource(TableView, UITableViewCellStyle.Subtitle, (NSString)"stdCell", 
+            var source = new MvxStandardTableViewSource(TableView, UITableViewCellStyle.Subtitle, (NSString)"stdCell",
                 "TitleText Title; DetailText 'Posted by ' + Author + ' • ' + Score + ' points • ' + CommentsCount + ' comments'");
 
             TableView.Source = source;

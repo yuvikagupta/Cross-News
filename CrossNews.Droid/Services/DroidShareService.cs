@@ -9,10 +9,7 @@ namespace CrossNews.Droid.Services
     {
         private readonly IMvxAndroidCurrentTopActivity _topActivity;
 
-        public DroidShareService(IMvxAndroidCurrentTopActivity topActivity)
-        {
-            _topActivity = topActivity;
-        }
+        public DroidShareService(IMvxAndroidCurrentTopActivity topActivity) => _topActivity = topActivity;
 
         public Task<bool> ShareLinkAsync(string title, string url, object opaqueSource)
         {

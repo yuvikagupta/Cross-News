@@ -7,8 +7,8 @@ namespace CrossNews.Core.Tests.Services
 {
     public class FeatureStoreTests
     {
-        private Mock<IFeatureProvider> Base = new Mock<IFeatureProvider>();
-        private Mock<IPlatformFeatureOverlay> Overlay = new Mock<IPlatformFeatureOverlay>();
+        private readonly Mock<IFeatureProvider> Base = new Mock<IFeatureProvider>();
+        private readonly Mock<IPlatformFeatureOverlay> Overlay = new Mock<IPlatformFeatureOverlay>();
         private Mock<IPlatformFeatureOverlay> DummyOverlay 
         {
             get
