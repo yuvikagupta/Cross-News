@@ -13,7 +13,7 @@ using UIKit;
 
 namespace CrossNews.Ios.Views
 {
-    [MvxModalPresentation(WrapInNavigationController = true)]
+    [MvxChildPresentation]
     public class SettingsView : MvxViewController<SettingsViewModel>
         , IUITableViewDelegate
         , IUITableViewDataSource
@@ -80,7 +80,7 @@ namespace CrossNews.Ios.Views
                 var nav = Mvx.IoCProvider.Resolve<IMvxNavigationService>();
                 nav.Close(ViewModel);
             });
-            NavigationItem.LeftBarButtonItem = closeButton;
+            //NavigationItem.LeftBarButtonItem = closeButton;
 
             set.Apply();
 

@@ -10,6 +10,14 @@ namespace CrossNews.Ios
     [Register("AppDelegate")]
     public class AppDelegate : MvxApplicationDelegate<Setup, App>
     {
+        public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+        {
+            var b = base.FinishedLaunching(application, launchOptions);
+
+            Window.BackgroundColor = UIColor.White;
+
+            return b;
+        }
     }
 }
 
