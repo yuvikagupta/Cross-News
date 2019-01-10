@@ -194,6 +194,8 @@
     <Compile Include="Services\IosPlatformFeatureOverlay.cs" />
     <Compile Include="Views\FeatureTogglesView.cs" />
     <Compile Include="Views\NewsRootView.cs" />
+    <Compile Include="Views\IScrollableView.cs" />
+    <Compile Include="Views\ContentView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrossNews.Core\CrossNews.Core.csproj">

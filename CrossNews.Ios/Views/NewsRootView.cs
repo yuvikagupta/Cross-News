@@ -1,4 +1,5 @@
-﻿using CrossNews.Core.Extensions;
+﻿using System;
+using CrossNews.Core.Extensions;
 using CrossNews.Core.ViewModels;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
@@ -10,6 +11,8 @@ namespace CrossNews.Ios.Views
     public class NewsRootView : MvxTabBarViewController<NewsRootViewModel>
     {
         private bool _loaded;
+        private UIViewController _lastSelected = null;
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -22,6 +25,17 @@ namespace CrossNews.Ios.Views
             NavigationItem.RightBarButtonItem = settingsButton;
         }
 
+        private void OnViewControllerSelected(object sender, UITabBarSelectionEventArgs e)
+        {
+            if (e.ViewController == _lastSelected && e.ViewController is IScrollableView scrollable)
+            {
+                scrollable.ScrollToTop();
+            }
+
+            _lastSelected = e.ViewController;
+            return;
+        }
+
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
@@ -32,6 +46,7 @@ namespace CrossNews.Ios.Views
             }
 
             _loaded = true;
+            ViewControllerSelected += OnViewControllerSelected;
             ViewModel.ShowInitialViewModelsCommand.TryExecute();
         }
 

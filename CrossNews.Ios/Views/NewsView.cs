@@ -14,7 +14,9 @@ using UIKit;
 
 namespace CrossNews.Ios.Views
 {
-    public class NewsView : MvxTableViewController<NewsViewModel>, IMvxOverridePresentationAttribute
+    public class NewsView : MvxTableViewController<NewsViewModel>
+        , IScrollableView
+        , IMvxOverridePresentationAttribute
     {
         public MvxBasePresentationAttribute PresentationAttribute(MvxViewModelRequest request)
         {
@@ -35,6 +37,7 @@ namespace CrossNews.Ios.Views
                 {
                     WrapInNavigationController = true
                 };
+
             string GetIconPrefix(Type viewmodelType)
             {
                 if (viewmodelType == typeof(AskNewsViewModel))
@@ -104,13 +107,6 @@ namespace CrossNews.Ios.Views
             View.BackgroundColor = UIColor.White;
             Title = GetTitle(ViewModel.GetType());
 
-#pragma warning disable XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
-            if (UIDevice.CurrentDevice.CheckSystemVersion(11, 0))
-            {
-                NavigationController.NavigationBar.PrefersLargeTitles = true;
-            }
-#pragma warning restore XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
-
             var source = new MvxStandardTableViewSource(TableView, UITableViewCellStyle.Subtitle, (NSString)"stdCell",
                 "TitleText Title; DetailText 'Posted by ' + Author + ' • ' + Score + ' points • ' + CommentsCount + ' comments'");
 
@@ -156,5 +152,20 @@ namespace CrossNews.Ios.Views
 
             RefreshControl = refreshControl;
         }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+#pragma warning disable XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
+            if (UIDevice.CurrentDevice.CheckSystemVersion(11, 0))
+            {
+                NavigationController.NavigationBar.PrefersLargeTitles = true;
+            }
+#pragma warning restore XI0002 // Notifies you from using newer Apple APIs when targeting an older OS version
+        }
+
+        public void ScrollToTop() => 
+            TableView.ScrollToRow(NSIndexPath.FromRowSection(0, 0), UITableViewScrollPosition.Top, true);
     }
 }
