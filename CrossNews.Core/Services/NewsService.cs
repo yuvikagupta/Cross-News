@@ -52,14 +52,14 @@ namespace CrossNews.Core.Services
 
                     var storyItem = JsonConvert.DeserializeObject<Item>(task.Result);
                     newItems.Add(storyItem);
-                    var msg = new NewsItemMessage<Item>(this, storyItem);
+                    var msg = new NewsItemMessage(this, storyItem);
                     _messenger.Publish(msg);
                 }));
 
             var itemList = items.ToList();
             foreach (var item in itemList)
             {
-                var msg = new NewsItemMessage<Item>(this, item);
+                var msg = new NewsItemMessage(this, item);
                 _messenger.Publish(msg);
             }
 

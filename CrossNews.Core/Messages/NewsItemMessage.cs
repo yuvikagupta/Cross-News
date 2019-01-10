@@ -1,11 +1,12 @@
-﻿using MvvmCross.Plugin.Messenger;
+﻿using CrossNews.Core.Model.Api;
 
 namespace CrossNews.Core.Messages
 {
-    internal class NewsItemMessage<T> : MvxMessage
-    {
-        public T Data { get; }
 
-        public NewsItemMessage(object sender, T data) : base(sender) => Data = data;
+    internal class NewsItemMessage : ItemMessage<Item>
+    {
+        public NewsItemMessage(object sender, Item data) : base(sender, data)
+        {
+        }
     }
 }

@@ -30,10 +30,7 @@ namespace CrossNews.Core.ViewModels
                 () => _browser.ShowInBrowserAsync(new Uri(StoryUrl), false));
         }
 
-        public override void Prepare(IStory parameter)
-        {
-            _story = parameter;
-        }
+        public override void Prepare(IStory parameter) => _story = parameter;
 
         public string Title => _story.Title;
         public string StoryUrl => _story.Url;

@@ -54,7 +54,7 @@ namespace CrossNews.Core.ViewModels
 
             ShowSettingsCommand = new MvxAsyncCommand(() => _navigation.Navigate<SettingsViewModel>());
 
-            _fillerToken = messenger.Subscribe<NewsItemMessage<Item>>(OnItemReceived);
+            _fillerToken = messenger.Subscribe<NewsItemMessage>(OnItemReceived);
 
             TabPresentation = featureStore.IsEnabled(Features.StoryTabPresentation);
         }
@@ -79,7 +79,7 @@ namespace CrossNews.Core.ViewModels
             }
         }
 
-        private void OnItemReceived(NewsItemMessage<Item> msg)
+        private void OnItemReceived(NewsItemMessage msg)
         {
             var id = msg.Data.Id;
 
