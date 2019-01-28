@@ -13,6 +13,7 @@ namespace CrossNews.Droid
         {
             var ioc = Mvx.IoCProvider;
             ioc.RegisterSingleton<IAppService>(new DroidAppService());
+            ioc.ConstructAndRegisterSingleton<IPlatformFeatureOverlay, DroidPlatformFeatureOverlay>();
             ioc.LazyConstructAndRegisterSingleton<IDialogService, DroidDialogService>();
             ioc.LazyConstructAndRegisterSingleton<IBrowserService, DroidBrowserService>();
             ioc.LazyConstructAndRegisterSingleton<IShareService, DroidShareService>();

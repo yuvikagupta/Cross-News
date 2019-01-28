@@ -9,7 +9,7 @@ namespace CrossNews.Core.Services
         {
             Features = new Dictionary<string, bool>
             {
-                [OpenStoryInCustomBrowser] = true,
+                [OpenStoryInCustomBrowser] = Always,
                 [ShowOverrideUi] = OnlyDebug,
                 [StoryTabPresentation] = OnlyDebug,
                 

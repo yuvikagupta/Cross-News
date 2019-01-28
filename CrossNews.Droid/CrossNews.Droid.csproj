@@ -74,6 +74,7 @@
     <Compile Include="Services\DroidShareService.cs" />
     <Compile Include="Common\LineDividerItemDecoration.cs" />
     <Compile Include="Services\DroidAppService.cs" />
+    <Compile Include="Services\DroidPlatformFeatureOverlay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
