@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Support.V7.Widget;
+using Android.Views;
 using CrossNews.Core.Extensions;
 using CrossNews.Core.ViewModels;
 using CrossNews.Droid.Common;
@@ -23,6 +24,24 @@ namespace CrossNews.Droid.Views
             toolbar.Title = GetString(Resource.String.app_name);
 
             ViewModel.ShowInitialViewModelsCommand.TryExecute();
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_settings:
+                    ViewModel.ShowSettingsCommand.TryExecute();
+                    return true;
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
         }
     }
 }

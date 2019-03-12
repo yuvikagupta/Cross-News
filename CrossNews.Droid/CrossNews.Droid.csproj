@@ -70,8 +70,8 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\NewsRootView.cs" />
     <Compile Include="Views\NewsView.cs" />
+    <Compile Include="Views\SettingsView.cs" />
     <Compile Include="Views\StoryView.cs" />
-    <Compile Include="Views\TopNewsView.cs" />
     <Compile Include="Services\DroidBrowserService.cs" />
     <Compile Include="Services\DroidShareService.cs" />
     <Compile Include="Common\LineDividerItemDecoration.cs" />
@@ -167,6 +167,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\story_view.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\settings_view.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

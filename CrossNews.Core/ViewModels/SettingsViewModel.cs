@@ -29,7 +29,7 @@ namespace CrossNews.Core.ViewModels
         private Task OnShowLicenses() => _navigation.Navigate<LicensesViewModel>();
 
         private Task OnShowProjectSite() => 
-            _browser.ShowInBrowserAsync(new Uri("https://github.com/kipters/CrossNews"), true);
+            _browser.ShowInBrowserAsync(new Uri(ProjectWebsite), true);
 
         private Task OnShowFeatureToggles() => _navigation.Navigate<FeatureTogglesViewModel>();
 
@@ -39,5 +39,6 @@ namespace CrossNews.Core.ViewModels
         public ICommand ShowProjectSiteCommand { get; }
         public ICommand ShowLicensesCommand { get; }
         public ICommand ShowFeatureTogglesCommand { get; }
+        public string ProjectWebsite { get; } = "https://github.com/kipters/CrossNews";
     }
 }

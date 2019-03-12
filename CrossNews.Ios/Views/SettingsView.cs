@@ -29,7 +29,7 @@ namespace CrossNews.Ios.Views
             cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
             cell.TextLabel.Text = indexPath.Section == 0 
-                ? "https://github.com/kipters/CrossNews" 
+                ? ViewModel.ProjectWebsite 
                 : "Open source licenses";
 
             return cell;

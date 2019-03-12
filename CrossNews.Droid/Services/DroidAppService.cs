@@ -10,8 +10,12 @@ namespace CrossNews.Droid.Services
             var packageInfo = Application.Context.PackageManager.GetPackageInfo(Application.Context.PackageName, 0);
             Version = packageInfo.VersionName;
             BuildNumber = packageInfo.VersionCode;
-            Name = packageInfo.ApplicationInfo.PackageName;
             Platform = "Android";
+
+            var nameRes = packageInfo.ApplicationInfo.LabelRes;
+            Name = nameRes == 0
+                ? packageInfo.ApplicationInfo.NonLocalizedLabel.ToString()
+                : Application.Context.GetString(nameRes);
         }
 
         public string Version { get; }
