@@ -5793,44 +5793,44 @@ namespace CrossNews.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0c005a
-			public const int abc_background_cache_hint_selector_material_dark = 2131492954;
-			
-			// aapt resource value: 0x7f0c005b
-			public const int abc_background_cache_hint_selector_material_light = 2131492955;
-			
-			// aapt resource value: 0x7f0c005c
-			public const int abc_btn_colored_borderless_text_material = 2131492956;
-			
-			// aapt resource value: 0x7f0c005d
-			public const int abc_btn_colored_text_material = 2131492957;
-			
 			// aapt resource value: 0x7f0c005e
-			public const int abc_color_highlight_material = 2131492958;
+			public const int abc_background_cache_hint_selector_material_dark = 2131492958;
 			
 			// aapt resource value: 0x7f0c005f
-			public const int abc_hint_foreground_material_dark = 2131492959;
+			public const int abc_background_cache_hint_selector_material_light = 2131492959;
 			
 			// aapt resource value: 0x7f0c0060
-			public const int abc_hint_foreground_material_light = 2131492960;
+			public const int abc_btn_colored_borderless_text_material = 2131492960;
+			
+			// aapt resource value: 0x7f0c0061
+			public const int abc_btn_colored_text_material = 2131492961;
+			
+			// aapt resource value: 0x7f0c0062
+			public const int abc_color_highlight_material = 2131492962;
+			
+			// aapt resource value: 0x7f0c0063
+			public const int abc_hint_foreground_material_dark = 2131492963;
+			
+			// aapt resource value: 0x7f0c0064
+			public const int abc_hint_foreground_material_light = 2131492964;
 			
 			// aapt resource value: 0x7f0c0004
 			public const int abc_input_method_navigation_guard = 2131492868;
 			
-			// aapt resource value: 0x7f0c0061
-			public const int abc_primary_text_disable_only_material_dark = 2131492961;
-			
-			// aapt resource value: 0x7f0c0062
-			public const int abc_primary_text_disable_only_material_light = 2131492962;
-			
-			// aapt resource value: 0x7f0c0063
-			public const int abc_primary_text_material_dark = 2131492963;
-			
-			// aapt resource value: 0x7f0c0064
-			public const int abc_primary_text_material_light = 2131492964;
-			
 			// aapt resource value: 0x7f0c0065
-			public const int abc_search_url_text = 2131492965;
+			public const int abc_primary_text_disable_only_material_dark = 2131492965;
+			
+			// aapt resource value: 0x7f0c0066
+			public const int abc_primary_text_disable_only_material_light = 2131492966;
+			
+			// aapt resource value: 0x7f0c0067
+			public const int abc_primary_text_material_dark = 2131492967;
+			
+			// aapt resource value: 0x7f0c0068
+			public const int abc_primary_text_material_light = 2131492968;
+			
+			// aapt resource value: 0x7f0c0069
+			public const int abc_search_url_text = 2131492969;
 			
 			// aapt resource value: 0x7f0c0005
 			public const int abc_search_url_text_normal = 2131492869;
@@ -5841,29 +5841,29 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0c0007
 			public const int abc_search_url_text_selected = 2131492871;
 			
-			// aapt resource value: 0x7f0c0066
-			public const int abc_secondary_text_material_dark = 2131492966;
-			
-			// aapt resource value: 0x7f0c0067
-			public const int abc_secondary_text_material_light = 2131492967;
-			
-			// aapt resource value: 0x7f0c0068
-			public const int abc_tint_btn_checkable = 2131492968;
-			
-			// aapt resource value: 0x7f0c0069
-			public const int abc_tint_default = 2131492969;
-			
 			// aapt resource value: 0x7f0c006a
-			public const int abc_tint_edittext = 2131492970;
+			public const int abc_secondary_text_material_dark = 2131492970;
 			
 			// aapt resource value: 0x7f0c006b
-			public const int abc_tint_seek_thumb = 2131492971;
+			public const int abc_secondary_text_material_light = 2131492971;
 			
 			// aapt resource value: 0x7f0c006c
-			public const int abc_tint_spinner = 2131492972;
+			public const int abc_tint_btn_checkable = 2131492972;
 			
 			// aapt resource value: 0x7f0c006d
-			public const int abc_tint_switch_track = 2131492973;
+			public const int abc_tint_default = 2131492973;
+			
+			// aapt resource value: 0x7f0c006e
+			public const int abc_tint_edittext = 2131492974;
+			
+			// aapt resource value: 0x7f0c006f
+			public const int abc_tint_seek_thumb = 2131492975;
+			
+			// aapt resource value: 0x7f0c0070
+			public const int abc_tint_spinner = 2131492976;
+			
+			// aapt resource value: 0x7f0c0071
+			public const int abc_tint_switch_track = 2131492977;
 			
 			// aapt resource value: 0x7f0c0008
 			public const int accent_material_dark = 2131492872;
@@ -5901,6 +5901,18 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0c0013
 			public const int bright_foreground_material_light = 2131492883;
 			
+			// aapt resource value: 0x7f0c0053
+			public const int browser_actions_bg_grey = 2131492947;
+			
+			// aapt resource value: 0x7f0c0054
+			public const int browser_actions_divider_color = 2131492948;
+			
+			// aapt resource value: 0x7f0c0055
+			public const int browser_actions_text_color = 2131492949;
+			
+			// aapt resource value: 0x7f0c0056
+			public const int browser_actions_title_color = 2131492950;
+			
 			// aapt resource value: 0x7f0c0014
 			public const int button_material_dark = 2131492884;
 			
@@ -5919,17 +5931,17 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0c0003
 			public const int cardview_shadow_start_color = 2131492867;
 			
-			// aapt resource value: 0x7f0c0057
-			public const int colorAccent = 2131492951;
+			// aapt resource value: 0x7f0c005b
+			public const int colorAccent = 2131492955;
 			
-			// aapt resource value: 0x7f0c0055
-			public const int colorPrimary = 2131492949;
+			// aapt resource value: 0x7f0c0059
+			public const int colorPrimary = 2131492953;
 			
-			// aapt resource value: 0x7f0c0056
-			public const int colorPrimaryDark = 2131492950;
+			// aapt resource value: 0x7f0c005a
+			public const int colorPrimaryDark = 2131492954;
 			
-			// aapt resource value: 0x7f0c0058
-			public const int dark_gray = 2131492952;
+			// aapt resource value: 0x7f0c005c
+			public const int dark_gray = 2131492956;
 			
 			// aapt resource value: 0x7f0c0040
 			public const int design_bottom_navigation_shadow_color = 2131492928;
@@ -5940,8 +5952,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0c0042
 			public const int design_default_color_primary_dark = 2131492930;
 			
-			// aapt resource value: 0x7f0c006e
-			public const int design_error = 2131492974;
+			// aapt resource value: 0x7f0c0072
+			public const int design_error = 2131492978;
 			
 			// aapt resource value: 0x7f0c0043
 			public const int design_fab_shadow_end_color = 2131492931;
@@ -5967,8 +5979,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0c004a
 			public const int design_snackbar_background_color = 2131492938;
 			
-			// aapt resource value: 0x7f0c006f
-			public const int design_tint_password_toggle = 2131492975;
+			// aapt resource value: 0x7f0c0073
+			public const int design_tint_password_toggle = 2131492979;
 			
 			// aapt resource value: 0x7f0c0016
 			public const int dim_foreground_disabled_material_dark = 2131492886;
@@ -6000,8 +6012,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0c001f
 			public const int highlighted_text_material_light = 2131492895;
 			
-			// aapt resource value: 0x7f0c0059
-			public const int ic_launcher_background = 2131492953;
+			// aapt resource value: 0x7f0c005d
+			public const int ic_launcher_background = 2131492957;
 			
 			// aapt resource value: 0x7f0c0020
 			public const int material_blue_grey_800 = 2131492896;
@@ -6039,71 +6051,71 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0c002b
 			public const int material_grey_900 = 2131492907;
 			
-			// aapt resource value: 0x7f0c0070
-			public const int mtrl_bottom_nav_colored_item_tint = 2131492976;
+			// aapt resource value: 0x7f0c0074
+			public const int mtrl_bottom_nav_colored_item_tint = 2131492980;
 			
-			// aapt resource value: 0x7f0c0071
-			public const int mtrl_bottom_nav_item_tint = 2131492977;
+			// aapt resource value: 0x7f0c0075
+			public const int mtrl_bottom_nav_item_tint = 2131492981;
 			
 			// aapt resource value: 0x7f0c004b
 			public const int mtrl_btn_bg_color_disabled = 2131492939;
 			
-			// aapt resource value: 0x7f0c0072
-			public const int mtrl_btn_bg_color_selector = 2131492978;
+			// aapt resource value: 0x7f0c0076
+			public const int mtrl_btn_bg_color_selector = 2131492982;
 			
-			// aapt resource value: 0x7f0c0073
-			public const int mtrl_btn_ripple_color = 2131492979;
+			// aapt resource value: 0x7f0c0077
+			public const int mtrl_btn_ripple_color = 2131492983;
 			
-			// aapt resource value: 0x7f0c0074
-			public const int mtrl_btn_stroke_color_selector = 2131492980;
+			// aapt resource value: 0x7f0c0078
+			public const int mtrl_btn_stroke_color_selector = 2131492984;
 			
-			// aapt resource value: 0x7f0c0075
-			public const int mtrl_btn_text_btn_ripple_color = 2131492981;
+			// aapt resource value: 0x7f0c0079
+			public const int mtrl_btn_text_btn_ripple_color = 2131492985;
 			
 			// aapt resource value: 0x7f0c004c
 			public const int mtrl_btn_text_color_disabled = 2131492940;
 			
-			// aapt resource value: 0x7f0c0076
-			public const int mtrl_btn_text_color_selector = 2131492982;
+			// aapt resource value: 0x7f0c007a
+			public const int mtrl_btn_text_color_selector = 2131492986;
 			
 			// aapt resource value: 0x7f0c004d
 			public const int mtrl_btn_transparent_bg_color = 2131492941;
 			
-			// aapt resource value: 0x7f0c0077
-			public const int mtrl_chip_background_color = 2131492983;
-			
-			// aapt resource value: 0x7f0c0078
-			public const int mtrl_chip_close_icon_tint = 2131492984;
-			
-			// aapt resource value: 0x7f0c0079
-			public const int mtrl_chip_ripple_color = 2131492985;
-			
-			// aapt resource value: 0x7f0c007a
-			public const int mtrl_chip_text_color = 2131492986;
-			
 			// aapt resource value: 0x7f0c007b
-			public const int mtrl_fab_ripple_color = 2131492987;
+			public const int mtrl_chip_background_color = 2131492987;
+			
+			// aapt resource value: 0x7f0c007c
+			public const int mtrl_chip_close_icon_tint = 2131492988;
+			
+			// aapt resource value: 0x7f0c007d
+			public const int mtrl_chip_ripple_color = 2131492989;
+			
+			// aapt resource value: 0x7f0c007e
+			public const int mtrl_chip_text_color = 2131492990;
+			
+			// aapt resource value: 0x7f0c007f
+			public const int mtrl_fab_ripple_color = 2131492991;
 			
 			// aapt resource value: 0x7f0c004e
 			public const int mtrl_scrim_color = 2131492942;
 			
-			// aapt resource value: 0x7f0c007c
-			public const int mtrl_tabs_colored_ripple_color = 2131492988;
-			
-			// aapt resource value: 0x7f0c007d
-			public const int mtrl_tabs_icon_color_selector = 2131492989;
-			
-			// aapt resource value: 0x7f0c007e
-			public const int mtrl_tabs_icon_color_selector_colored = 2131492990;
-			
-			// aapt resource value: 0x7f0c007f
-			public const int mtrl_tabs_legacy_text_color_selector = 2131492991;
-			
 			// aapt resource value: 0x7f0c0080
-			public const int mtrl_tabs_ripple_color = 2131492992;
+			public const int mtrl_tabs_colored_ripple_color = 2131492992;
 			
 			// aapt resource value: 0x7f0c0081
-			public const int mtrl_text_btn_text_color_selector = 2131492993;
+			public const int mtrl_tabs_icon_color_selector = 2131492993;
+			
+			// aapt resource value: 0x7f0c0082
+			public const int mtrl_tabs_icon_color_selector_colored = 2131492994;
+			
+			// aapt resource value: 0x7f0c0083
+			public const int mtrl_tabs_legacy_text_color_selector = 2131492995;
+			
+			// aapt resource value: 0x7f0c0084
+			public const int mtrl_tabs_ripple_color = 2131492996;
+			
+			// aapt resource value: 0x7f0c0085
+			public const int mtrl_text_btn_text_color_selector = 2131492997;
 			
 			// aapt resource value: 0x7f0c004f
 			public const int mtrl_textinput_default_box_stroke_color = 2131492943;
@@ -6117,11 +6129,11 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0c0052
 			public const int mtrl_textinput_hovered_box_stroke_color = 2131492946;
 			
-			// aapt resource value: 0x7f0c0053
-			public const int notification_action_color_filter = 2131492947;
+			// aapt resource value: 0x7f0c0057
+			public const int notification_action_color_filter = 2131492951;
 			
-			// aapt resource value: 0x7f0c0054
-			public const int notification_icon_bg_color = 2131492948;
+			// aapt resource value: 0x7f0c0058
+			public const int notification_icon_bg_color = 2131492952;
 			
 			// aapt resource value: 0x7f0c002c
 			public const int primary_dark_material_dark = 2131492908;
@@ -6171,11 +6183,11 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0c003b
 			public const int switch_thumb_disabled_material_light = 2131492923;
 			
-			// aapt resource value: 0x7f0c0082
-			public const int switch_thumb_material_dark = 2131492994;
+			// aapt resource value: 0x7f0c0086
+			public const int switch_thumb_material_dark = 2131492998;
 			
-			// aapt resource value: 0x7f0c0083
-			public const int switch_thumb_material_light = 2131492995;
+			// aapt resource value: 0x7f0c0087
+			public const int switch_thumb_material_light = 2131492999;
 			
 			// aapt resource value: 0x7f0c003c
 			public const int switch_thumb_normal_material_dark = 2131492924;
@@ -6427,6 +6439,12 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f09000c
 			public const int abc_text_size_title_material_toolbar = 2131296268;
 			
+			// aapt resource value: 0x7f0900c1
+			public const int browser_actions_context_menu_max_width = 2131296449;
+			
+			// aapt resource value: 0x7f0900c2
+			public const int browser_actions_context_menu_min_padding = 2131296450;
+			
 			// aapt resource value: 0x7f090006
 			public const int cardview_compat_inset_shadow = 2131296262;
 			
@@ -6436,26 +6454,26 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f090008
 			public const int cardview_default_radius = 2131296264;
 			
-			// aapt resource value: 0x7f0900c5
-			public const int compat_button_inset_horizontal_material = 2131296453;
-			
-			// aapt resource value: 0x7f0900c6
-			public const int compat_button_inset_vertical_material = 2131296454;
-			
 			// aapt resource value: 0x7f0900c7
-			public const int compat_button_padding_horizontal_material = 2131296455;
+			public const int compat_button_inset_horizontal_material = 2131296455;
 			
 			// aapt resource value: 0x7f0900c8
-			public const int compat_button_padding_vertical_material = 2131296456;
+			public const int compat_button_inset_vertical_material = 2131296456;
 			
 			// aapt resource value: 0x7f0900c9
-			public const int compat_control_corner_material = 2131296457;
+			public const int compat_button_padding_horizontal_material = 2131296457;
 			
 			// aapt resource value: 0x7f0900ca
-			public const int compat_notification_large_icon_max_height = 2131296458;
+			public const int compat_button_padding_vertical_material = 2131296458;
 			
 			// aapt resource value: 0x7f0900cb
-			public const int compat_notification_large_icon_max_width = 2131296459;
+			public const int compat_control_corner_material = 2131296459;
+			
+			// aapt resource value: 0x7f0900cc
+			public const int compat_notification_large_icon_max_height = 2131296460;
+			
+			// aapt resource value: 0x7f0900cd
+			public const int compat_notification_large_icon_max_width = 2131296461;
 			
 			// aapt resource value: 0x7f09006d
 			public const int design_appbar_elevation = 2131296365;
@@ -6595,8 +6613,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f090055
 			public const int disabled_alpha_material_light = 2131296341;
 			
-			// aapt resource value: 0x7f0900d7
-			public const int fab_margin = 2131296471;
+			// aapt resource value: 0x7f0900d9
+			public const int fab_margin = 2131296473;
 			
 			// aapt resource value: 0x7f090000
 			public const int fastscroll_default_thickness = 2131296256;
@@ -6637,11 +6655,11 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f090005
 			public const int item_touch_helper_swipe_escape_velocity = 2131296261;
 			
-			// aapt resource value: 0x7f0900d8
-			public const int layout_margin = 2131296472;
+			// aapt resource value: 0x7f0900da
+			public const int layout_margin = 2131296474;
 			
-			// aapt resource value: 0x7f0900d9
-			public const int layout_verticalMargin = 2131296473;
+			// aapt resource value: 0x7f0900db
+			public const int layout_verticalMargin = 2131296475;
 			
 			// aapt resource value: 0x7f090091
 			public const int mtrl_bottomappbar_fabOffsetEndMode = 2131296401;
@@ -6787,50 +6805,50 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0900c0
 			public const int mtrl_toolbar_default_height = 2131296448;
 			
-			// aapt resource value: 0x7f0900cc
-			public const int notification_action_icon_size = 2131296460;
-			
-			// aapt resource value: 0x7f0900cd
-			public const int notification_action_text_size = 2131296461;
-			
 			// aapt resource value: 0x7f0900ce
-			public const int notification_big_circle_margin = 2131296462;
-			
-			// aapt resource value: 0x7f0900c2
-			public const int notification_content_margin_start = 2131296450;
+			public const int notification_action_icon_size = 2131296462;
 			
 			// aapt resource value: 0x7f0900cf
-			public const int notification_large_icon_height = 2131296463;
+			public const int notification_action_text_size = 2131296463;
 			
 			// aapt resource value: 0x7f0900d0
-			public const int notification_large_icon_width = 2131296464;
-			
-			// aapt resource value: 0x7f0900c3
-			public const int notification_main_column_padding_top = 2131296451;
+			public const int notification_big_circle_margin = 2131296464;
 			
 			// aapt resource value: 0x7f0900c4
-			public const int notification_media_narrow_margin = 2131296452;
+			public const int notification_content_margin_start = 2131296452;
 			
 			// aapt resource value: 0x7f0900d1
-			public const int notification_right_icon_size = 2131296465;
-			
-			// aapt resource value: 0x7f0900c1
-			public const int notification_right_side_padding_top = 2131296449;
+			public const int notification_large_icon_height = 2131296465;
 			
 			// aapt resource value: 0x7f0900d2
-			public const int notification_small_icon_background_padding = 2131296466;
+			public const int notification_large_icon_width = 2131296466;
+			
+			// aapt resource value: 0x7f0900c5
+			public const int notification_main_column_padding_top = 2131296453;
+			
+			// aapt resource value: 0x7f0900c6
+			public const int notification_media_narrow_margin = 2131296454;
 			
 			// aapt resource value: 0x7f0900d3
-			public const int notification_small_icon_size_as_large = 2131296467;
+			public const int notification_right_icon_size = 2131296467;
+			
+			// aapt resource value: 0x7f0900c3
+			public const int notification_right_side_padding_top = 2131296451;
 			
 			// aapt resource value: 0x7f0900d4
-			public const int notification_subtext_size = 2131296468;
+			public const int notification_small_icon_background_padding = 2131296468;
 			
 			// aapt resource value: 0x7f0900d5
-			public const int notification_top_pad = 2131296469;
+			public const int notification_small_icon_size_as_large = 2131296469;
 			
 			// aapt resource value: 0x7f0900d6
-			public const int notification_top_pad_large_text = 2131296470;
+			public const int notification_subtext_size = 2131296470;
+			
+			// aapt resource value: 0x7f0900d7
+			public const int notification_top_pad = 2131296471;
+			
+			// aapt resource value: 0x7f0900d8
+			public const int notification_top_pad_large_text = 2131296472;
 			
 			// aapt resource value: 0x7f09005d
 			public const int tooltip_corner_radius = 2131296349;
@@ -7284,17 +7302,17 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0078
 			public const int action_bar_title = 2131361912;
 			
-			// aapt resource value: 0x7f0a00be
-			public const int action_container = 2131361982;
+			// aapt resource value: 0x7f0a00c3
+			public const int action_container = 2131361987;
 			
 			// aapt resource value: 0x7f0a009d
 			public const int action_context_bar = 2131361949;
 			
-			// aapt resource value: 0x7f0a00c9
-			public const int action_divider = 2131361993;
+			// aapt resource value: 0x7f0a00ce
+			public const int action_divider = 2131361998;
 			
-			// aapt resource value: 0x7f0a00bf
-			public const int action_image = 2131361983;
+			// aapt resource value: 0x7f0a00c4
+			public const int action_image = 2131361988;
 			
 			// aapt resource value: 0x7f0a0003
 			public const int action_menu_divider = 2131361795;
@@ -7311,14 +7329,14 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a007a
 			public const int action_mode_close_button = 2131361914;
 			
-			// aapt resource value: 0x7f0a00d2
-			public const int action_settings = 2131362002;
+			// aapt resource value: 0x7f0a00d7
+			public const int action_settings = 2131362007;
 			
-			// aapt resource value: 0x7f0a00c0
-			public const int action_text = 2131361984;
+			// aapt resource value: 0x7f0a00c5
+			public const int action_text = 2131361989;
 			
-			// aapt resource value: 0x7f0a00ca
-			public const int actions = 2131361994;
+			// aapt resource value: 0x7f0a00cf
+			public const int actions = 2131361999;
 			
 			// aapt resource value: 0x7f0a007b
 			public const int activity_chooser_view_content = 2131361915;
@@ -7335,8 +7353,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0041
 			public const int always = 2131361857;
 			
-			// aapt resource value: 0x7f0a00bb
-			public const int appbar = 2131361979;
+			// aapt resource value: 0x7f0a00c0
+			public const int appbar = 2131361984;
 			
 			// aapt resource value: 0x7f0a0074
 			public const int async = 2131361908;
@@ -7356,8 +7374,23 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0046
 			public const int bottom = 2131361862;
 			
-			// aapt resource value: 0x7f0a00cc
-			public const int button = 2131361996;
+			// aapt resource value: 0x7f0a00af
+			public const int browser_actions_header_text = 2131361967;
+			
+			// aapt resource value: 0x7f0a00b1
+			public const int browser_actions_menu_item_icon = 2131361969;
+			
+			// aapt resource value: 0x7f0a00b2
+			public const int browser_actions_menu_item_text = 2131361970;
+			
+			// aapt resource value: 0x7f0a00b0
+			public const int browser_actions_menu_items = 2131361968;
+			
+			// aapt resource value: 0x7f0a00ae
+			public const int browser_actions_menu_view = 2131361966;
+			
+			// aapt resource value: 0x7f0a00d1
+			public const int button = 2131362001;
 			
 			// aapt resource value: 0x7f0a0081
 			public const int buttonPanel = 2131361921;
@@ -7377,8 +7410,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0095
 			public const int checkbox = 2131361941;
 			
-			// aapt resource value: 0x7f0a00c8
-			public const int chronometer = 2131361992;
+			// aapt resource value: 0x7f0a00cd
+			public const int chronometer = 2131361997;
 			
 			// aapt resource value: 0x7f0a0063
 			public const int clip_horizontal = 2131361891;
@@ -7389,8 +7422,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0042
 			public const int collapseActionView = 2131361858;
 			
-			// aapt resource value: 0x7f0a00b0
-			public const int container = 2131361968;
+			// aapt resource value: 0x7f0a00b5
+			public const int container = 2131361973;
 			
 			// aapt resource value: 0x7f0a0091
 			public const int content = 2131361937;
@@ -7398,8 +7431,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0084
 			public const int contentPanel = 2131361924;
 			
-			// aapt resource value: 0x7f0a00b1
-			public const int coordinator = 2131361969;
+			// aapt resource value: 0x7f0a00b6
+			public const int coordinator = 2131361974;
 			
 			// aapt resource value: 0x7f0a008b
 			public const int custom = 2131361931;
@@ -7413,20 +7446,20 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a007e
 			public const int default_activity_button = 2131361918;
 			
-			// aapt resource value: 0x7f0a00b3
-			public const int design_bottom_sheet = 2131361971;
-			
 			// aapt resource value: 0x7f0a00b8
-			public const int design_menu_item_action_area = 2131361976;
+			public const int design_bottom_sheet = 2131361976;
 			
-			// aapt resource value: 0x7f0a00b7
-			public const int design_menu_item_action_area_stub = 2131361975;
+			// aapt resource value: 0x7f0a00bd
+			public const int design_menu_item_action_area = 2131361981;
 			
-			// aapt resource value: 0x7f0a00b6
-			public const int design_menu_item_text = 2131361974;
+			// aapt resource value: 0x7f0a00bc
+			public const int design_menu_item_action_area_stub = 2131361980;
 			
-			// aapt resource value: 0x7f0a00b5
-			public const int design_navigation_view = 2131361973;
+			// aapt resource value: 0x7f0a00bb
+			public const int design_menu_item_text = 2131361979;
+			
+			// aapt resource value: 0x7f0a00ba
+			public const int design_navigation_view = 2131361978;
 			
 			// aapt resource value: 0x7f0a0071
 			public const int dimensions = 2131361905;
@@ -7497,8 +7530,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0080
 			public const int icon = 2131361920;
 			
-			// aapt resource value: 0x7f0a00cb
-			public const int icon_group = 2131361995;
+			// aapt resource value: 0x7f0a00d0
+			public const int icon_group = 2131362000;
 			
 			// aapt resource value: 0x7f0a0043
 			public const int ifRoom = 2131361859;
@@ -7506,8 +7539,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a007d
 			public const int image = 2131361917;
 			
-			// aapt resource value: 0x7f0a00c4
-			public const int info = 2131361988;
+			// aapt resource value: 0x7f0a00c9
+			public const int info = 2131361993;
 			
 			// aapt resource value: 0x7f0a0068
 			public const int invisible = 2131361896;
@@ -7521,8 +7554,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0050
 			public const int labeled = 2131361872;
 			
-			// aapt resource value: 0x7f0a00af
-			public const int largeLabel = 2131361967;
+			// aapt resource value: 0x7f0a00b4
+			public const int largeLabel = 2131361972;
 			
 			// aapt resource value: 0x7f0a0056
 			public const int left = 2131361878;
@@ -7539,11 +7572,11 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a007f
 			public const int list_item = 2131361919;
 			
-			// aapt resource value: 0x7f0a00ba
-			public const int main_content = 2131361978;
+			// aapt resource value: 0x7f0a00bf
+			public const int main_content = 2131361983;
 			
-			// aapt resource value: 0x7f0a00d1
-			public const int masked = 2131362001;
+			// aapt resource value: 0x7f0a00d6
+			public const int masked = 2131362006;
 			
 			// aapt resource value: 0x7f0a00ab
 			public const int message = 2131361963;
@@ -7563,8 +7596,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0031
 			public const int multiply = 2131361841;
 			
-			// aapt resource value: 0x7f0a00b4
-			public const int navigation_header_container = 2131361972;
+			// aapt resource value: 0x7f0a00b9
+			public const int navigation_header_container = 2131361977;
 			
 			// aapt resource value: 0x7f0a0044
 			public const int never = 2131361860;
@@ -7575,14 +7608,14 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0027
 			public const int normal = 2131361831;
 			
+			// aapt resource value: 0x7f0a00cb
+			public const int notification_background = 2131361995;
+			
+			// aapt resource value: 0x7f0a00c7
+			public const int notification_main_column = 2131361991;
+			
 			// aapt resource value: 0x7f0a00c6
-			public const int notification_background = 2131361990;
-			
-			// aapt resource value: 0x7f0a00c2
-			public const int notification_main_column = 2131361986;
-			
-			// aapt resource value: 0x7f0a00c1
-			public const int notification_main_column_container = 2131361985;
+			public const int notification_main_column_container = 2131361990;
 			
 			// aapt resource value: 0x7f0a0062
 			public const int outline = 2131361890;
@@ -7620,11 +7653,11 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0057
 			public const int right = 2131361879;
 			
-			// aapt resource value: 0x7f0a00c5
-			public const int right_icon = 2131361989;
+			// aapt resource value: 0x7f0a00ca
+			public const int right_icon = 2131361994;
 			
-			// aapt resource value: 0x7f0a00c3
-			public const int right_side = 2131361987;
+			// aapt resource value: 0x7f0a00c8
+			public const int right_side = 2131361992;
 			
 			// aapt resource value: 0x7f0a000c
 			public const int save_image_matrix = 2131361804;
@@ -7701,8 +7734,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a002e
 			public const int showTitle = 2131361838;
 			
-			// aapt resource value: 0x7f0a00ae
-			public const int smallLabel = 2131361966;
+			// aapt resource value: 0x7f0a00b3
+			public const int smallLabel = 2131361971;
 			
 			// aapt resource value: 0x7f0a0016
 			public const int snackbar_action = 2131361814;
@@ -7743,8 +7776,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0058
 			public const int start = 2131361880;
 			
-			// aapt resource value: 0x7f0a00ce
-			public const int storiesRecyclerView = 2131361998;
+			// aapt resource value: 0x7f0a00d3
+			public const int storiesRecyclerView = 2131362003;
 			
 			// aapt resource value: 0x7f0a005d
 			public const int stretch = 2131361885;
@@ -7758,8 +7791,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0028
 			public const int tabMode = 2131361832;
 			
-			// aapt resource value: 0x7f0a00bc
-			public const int tabs = 2131361980;
+			// aapt resource value: 0x7f0a00c1
+			public const int tabs = 2131361985;
 			
 			// aapt resource value: 0x7f0a001e
 			public const int tag_transition_group = 2131361822;
@@ -7785,11 +7818,11 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a005c
 			public const int textStart = 2131361884;
 			
-			// aapt resource value: 0x7f0a00cd
-			public const int textView4 = 2131361997;
+			// aapt resource value: 0x7f0a00d2
+			public const int textView4 = 2131362002;
 			
-			// aapt resource value: 0x7f0a00b9
-			public const int text_input_password_toggle = 2131361977;
+			// aapt resource value: 0x7f0a00be
+			public const int text_input_password_toggle = 2131361982;
 			
 			// aapt resource value: 0x7f0a0018
 			public const int textinput_counter = 2131361816;
@@ -7800,8 +7833,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a001a
 			public const int textinput_helper_text = 2131361818;
 			
-			// aapt resource value: 0x7f0a00c7
-			public const int time = 2131361991;
+			// aapt resource value: 0x7f0a00cc
+			public const int time = 2131361996;
 			
 			// aapt resource value: 0x7f0a0023
 			public const int title = 2131361827;
@@ -7821,8 +7854,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a008c
 			public const int topPanel = 2131361932;
 			
-			// aapt resource value: 0x7f0a00b2
-			public const int touch_outside = 2131361970;
+			// aapt resource value: 0x7f0a00b7
+			public const int touch_outside = 2131361975;
 			
 			// aapt resource value: 0x7f0a000f
 			public const int transition_current_scene = 2131361807;
@@ -7854,14 +7887,14 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a001b
 			public const int view_offset_helper = 2131361819;
 			
-			// aapt resource value: 0x7f0a00bd
-			public const int viewpager = 2131361981;
+			// aapt resource value: 0x7f0a00c2
+			public const int viewpager = 2131361986;
 			
-			// aapt resource value: 0x7f0a00d0
-			public const int visible = 2131362000;
+			// aapt resource value: 0x7f0a00d5
+			public const int visible = 2131362005;
 			
-			// aapt resource value: 0x7f0a00cf
-			public const int webView = 2131361999;
+			// aapt resource value: 0x7f0a00d4
+			public const int webView = 2131362004;
 			
 			// aapt resource value: 0x7f0a0045
 			public const int withText = 2131361861;
@@ -8056,106 +8089,112 @@ namespace CrossNews.Droid
 			public const int activity_main = 2130968604;
 			
 			// aapt resource value: 0x7f04001d
-			public const int content_main = 2130968605;
+			public const int browser_actions_context_menu_page = 2130968605;
 			
 			// aapt resource value: 0x7f04001e
-			public const int design_bottom_navigation_item = 2130968606;
+			public const int browser_actions_context_menu_row = 2130968606;
 			
 			// aapt resource value: 0x7f04001f
-			public const int design_bottom_sheet_dialog = 2130968607;
+			public const int content_main = 2130968607;
 			
 			// aapt resource value: 0x7f040020
-			public const int design_layout_snackbar = 2130968608;
+			public const int design_bottom_navigation_item = 2130968608;
 			
 			// aapt resource value: 0x7f040021
-			public const int design_layout_snackbar_include = 2130968609;
+			public const int design_bottom_sheet_dialog = 2130968609;
 			
 			// aapt resource value: 0x7f040022
-			public const int design_layout_tab_icon = 2130968610;
+			public const int design_layout_snackbar = 2130968610;
 			
 			// aapt resource value: 0x7f040023
-			public const int design_layout_tab_text = 2130968611;
+			public const int design_layout_snackbar_include = 2130968611;
 			
 			// aapt resource value: 0x7f040024
-			public const int design_menu_item_action_area = 2130968612;
+			public const int design_layout_tab_icon = 2130968612;
 			
 			// aapt resource value: 0x7f040025
-			public const int design_navigation_item = 2130968613;
+			public const int design_layout_tab_text = 2130968613;
 			
 			// aapt resource value: 0x7f040026
-			public const int design_navigation_item_header = 2130968614;
+			public const int design_menu_item_action_area = 2130968614;
 			
 			// aapt resource value: 0x7f040027
-			public const int design_navigation_item_separator = 2130968615;
+			public const int design_navigation_item = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int design_navigation_item_subheader = 2130968616;
+			public const int design_navigation_item_header = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int design_navigation_menu = 2130968617;
+			public const int design_navigation_item_separator = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int design_navigation_menu_item = 2130968618;
+			public const int design_navigation_item_subheader = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int design_text_input_password_icon = 2130968619;
+			public const int design_navigation_menu = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int home_view = 2130968620;
+			public const int design_navigation_menu_item = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int mtrl_layout_snackbar = 2130968621;
+			public const int design_text_input_password_icon = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int mtrl_layout_snackbar_include = 2130968622;
+			public const int home_view = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int newsroot_view = 2130968623;
+			public const int mtrl_layout_snackbar = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int notification_action = 2130968624;
+			public const int mtrl_layout_snackbar_include = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int notification_action_tombstone = 2130968625;
+			public const int newsroot_view = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int notification_template_custom_big = 2130968626;
+			public const int notification_action = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int notification_template_icon_group = 2130968627;
+			public const int notification_action_tombstone = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int notification_template_part_chronometer = 2130968628;
+			public const int notification_template_custom_big = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int notification_template_part_time = 2130968629;
+			public const int notification_template_icon_group = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int select_dialog_item_material = 2130968630;
+			public const int notification_template_part_chronometer = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int select_dialog_multichoice_material = 2130968631;
+			public const int notification_template_part_time = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int select_dialog_singlechoice_material = 2130968632;
+			public const int select_dialog_item_material = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int settings_view = 2130968633;
+			public const int select_dialog_multichoice_material = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int splash_screen = 2130968634;
+			public const int select_dialog_singlechoice_material = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int stories_view = 2130968635;
+			public const int settings_view = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int story_list_item = 2130968636;
+			public const int splash_screen = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int story_view = 2130968637;
+			public const int stories_view = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int support_simple_spinner_dropdown_item = 2130968638;
+			public const int story_list_item = 2130968638;
+			
+			// aapt resource value: 0x7f04003f
+			public const int story_view = 2130968639;
+			
+			// aapt resource value: 0x7f040040
+			public const int support_simple_spinner_dropdown_item = 2130968640;
 			
 			static Layout()
 			{

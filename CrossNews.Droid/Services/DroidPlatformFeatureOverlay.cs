@@ -8,7 +8,7 @@ namespace CrossNews.Droid.Services
     {
         public IReadOnlyDictionary<string, bool> Overrides { get; } = new Dictionary<string, bool>
         {
-            [OpenStoryInCustomBrowser] = Always,
+            [OpenStoryInCustomBrowser] = Never,
             [StoryTabPresentation] = Always,
         };
     }
