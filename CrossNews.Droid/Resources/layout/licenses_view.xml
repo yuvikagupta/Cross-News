@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <mvvmcross.platforms.android.binding.views.MvxExpandableListView
+        android:id="@+id/licenses_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="48dp"
+        app:MvxBind="ItemClick ShowLicense"
+        app:MvxItemTemplate="@layout/license_list_item"
+        app:MvxGroupItemTemplate="@layout/license_list_header" />
+</android.support.constraint.ConstraintLayout>

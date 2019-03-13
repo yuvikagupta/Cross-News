@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="NameTextView"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        local:MvxBind="Text Name"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/licenseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="LicenseNameTextView"
+        local:MvxBind="Text LicenseName"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:layout_constraintHorizontal_bias="1.0"
+        local:layout_constraintStart_toEndOf="@+id/nameTextView"
+        local:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

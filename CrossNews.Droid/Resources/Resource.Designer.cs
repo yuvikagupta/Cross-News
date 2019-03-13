@@ -7302,17 +7302,17 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0078
 			public const int action_bar_title = 2131361912;
 			
-			// aapt resource value: 0x7f0a00c3
-			public const int action_container = 2131361987;
+			// aapt resource value: 0x7f0a00c7
+			public const int action_container = 2131361991;
 			
 			// aapt resource value: 0x7f0a009d
 			public const int action_context_bar = 2131361949;
 			
-			// aapt resource value: 0x7f0a00ce
-			public const int action_divider = 2131361998;
+			// aapt resource value: 0x7f0a00d2
+			public const int action_divider = 2131362002;
 			
-			// aapt resource value: 0x7f0a00c4
-			public const int action_image = 2131361988;
+			// aapt resource value: 0x7f0a00c8
+			public const int action_image = 2131361992;
 			
 			// aapt resource value: 0x7f0a0003
 			public const int action_menu_divider = 2131361795;
@@ -7329,14 +7329,14 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a007a
 			public const int action_mode_close_button = 2131361914;
 			
-			// aapt resource value: 0x7f0a00d7
-			public const int action_settings = 2131362007;
+			// aapt resource value: 0x7f0a00db
+			public const int action_settings = 2131362011;
 			
-			// aapt resource value: 0x7f0a00c5
-			public const int action_text = 2131361989;
+			// aapt resource value: 0x7f0a00c9
+			public const int action_text = 2131361993;
 			
-			// aapt resource value: 0x7f0a00cf
-			public const int actions = 2131361999;
+			// aapt resource value: 0x7f0a00d3
+			public const int actions = 2131362003;
 			
 			// aapt resource value: 0x7f0a007b
 			public const int activity_chooser_view_content = 2131361915;
@@ -7353,8 +7353,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0041
 			public const int always = 2131361857;
 			
-			// aapt resource value: 0x7f0a00c0
-			public const int appbar = 2131361984;
+			// aapt resource value: 0x7f0a00c4
+			public const int appbar = 2131361988;
 			
 			// aapt resource value: 0x7f0a0074
 			public const int async = 2131361908;
@@ -7389,8 +7389,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a00ae
 			public const int browser_actions_menu_view = 2131361966;
 			
-			// aapt resource value: 0x7f0a00d1
-			public const int button = 2131362001;
+			// aapt resource value: 0x7f0a00d5
+			public const int button = 2131362005;
 			
 			// aapt resource value: 0x7f0a0081
 			public const int buttonPanel = 2131361921;
@@ -7410,8 +7410,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0095
 			public const int checkbox = 2131361941;
 			
-			// aapt resource value: 0x7f0a00cd
-			public const int chronometer = 2131361997;
+			// aapt resource value: 0x7f0a00d1
+			public const int chronometer = 2131362001;
 			
 			// aapt resource value: 0x7f0a0063
 			public const int clip_horizontal = 2131361891;
@@ -7530,8 +7530,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0080
 			public const int icon = 2131361920;
 			
-			// aapt resource value: 0x7f0a00d0
-			public const int icon_group = 2131362000;
+			// aapt resource value: 0x7f0a00d4
+			public const int icon_group = 2131362004;
 			
 			// aapt resource value: 0x7f0a0043
 			public const int ifRoom = 2131361859;
@@ -7539,8 +7539,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a007d
 			public const int image = 2131361917;
 			
-			// aapt resource value: 0x7f0a00c9
-			public const int info = 2131361993;
+			// aapt resource value: 0x7f0a00cd
+			public const int info = 2131361997;
 			
 			// aapt resource value: 0x7f0a0068
 			public const int invisible = 2131361896;
@@ -7560,6 +7560,12 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0056
 			public const int left = 2131361878;
 			
+			// aapt resource value: 0x7f0a00c1
+			public const int licenseTextView = 2131361985;
+			
+			// aapt resource value: 0x7f0a00c2
+			public const int licenses_list = 2131361986;
+			
 			// aapt resource value: 0x7f0a001c
 			public const int line1 = 2131361820;
 			
@@ -7572,11 +7578,11 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a007f
 			public const int list_item = 2131361919;
 			
-			// aapt resource value: 0x7f0a00bf
-			public const int main_content = 2131361983;
+			// aapt resource value: 0x7f0a00c3
+			public const int main_content = 2131361987;
 			
-			// aapt resource value: 0x7f0a00d6
-			public const int masked = 2131362006;
+			// aapt resource value: 0x7f0a00da
+			public const int masked = 2131362010;
 			
 			// aapt resource value: 0x7f0a00ab
 			public const int message = 2131361963;
@@ -7596,6 +7602,9 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0031
 			public const int multiply = 2131361841;
 			
+			// aapt resource value: 0x7f0a00c0
+			public const int nameTextView = 2131361984;
+			
 			// aapt resource value: 0x7f0a00b9
 			public const int navigation_header_container = 2131361977;
 			
@@ -7608,14 +7617,14 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0027
 			public const int normal = 2131361831;
 			
+			// aapt resource value: 0x7f0a00cf
+			public const int notification_background = 2131361999;
+			
 			// aapt resource value: 0x7f0a00cb
-			public const int notification_background = 2131361995;
+			public const int notification_main_column = 2131361995;
 			
-			// aapt resource value: 0x7f0a00c7
-			public const int notification_main_column = 2131361991;
-			
-			// aapt resource value: 0x7f0a00c6
-			public const int notification_main_column_container = 2131361990;
+			// aapt resource value: 0x7f0a00ca
+			public const int notification_main_column_container = 2131361994;
 			
 			// aapt resource value: 0x7f0a0062
 			public const int outline = 2131361890;
@@ -7653,11 +7662,11 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0057
 			public const int right = 2131361879;
 			
-			// aapt resource value: 0x7f0a00ca
-			public const int right_icon = 2131361994;
+			// aapt resource value: 0x7f0a00ce
+			public const int right_icon = 2131361998;
 			
-			// aapt resource value: 0x7f0a00c8
-			public const int right_side = 2131361992;
+			// aapt resource value: 0x7f0a00cc
+			public const int right_side = 2131361996;
 			
 			// aapt resource value: 0x7f0a000c
 			public const int save_image_matrix = 2131361804;
@@ -7715,6 +7724,9 @@ namespace CrossNews.Droid
 			
 			// aapt resource value: 0x7f0a00a9
 			public const int search_voice_btn = 2131361961;
+			
+			// aapt resource value: 0x7f0a00bf
+			public const int section_text = 2131361983;
 			
 			// aapt resource value: 0x7f0a00aa
 			public const int select_dialog_listview = 2131361962;
@@ -7776,8 +7788,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0058
 			public const int start = 2131361880;
 			
-			// aapt resource value: 0x7f0a00d3
-			public const int storiesRecyclerView = 2131362003;
+			// aapt resource value: 0x7f0a00d7
+			public const int storiesRecyclerView = 2131362007;
 			
 			// aapt resource value: 0x7f0a005d
 			public const int stretch = 2131361885;
@@ -7791,8 +7803,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0028
 			public const int tabMode = 2131361832;
 			
-			// aapt resource value: 0x7f0a00c1
-			public const int tabs = 2131361985;
+			// aapt resource value: 0x7f0a00c5
+			public const int tabs = 2131361989;
 			
 			// aapt resource value: 0x7f0a001e
 			public const int tag_transition_group = 2131361822;
@@ -7818,8 +7830,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a005c
 			public const int textStart = 2131361884;
 			
-			// aapt resource value: 0x7f0a00d2
-			public const int textView4 = 2131362002;
+			// aapt resource value: 0x7f0a00d6
+			public const int textView4 = 2131362006;
 			
 			// aapt resource value: 0x7f0a00be
 			public const int text_input_password_toggle = 2131361982;
@@ -7833,8 +7845,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a001a
 			public const int textinput_helper_text = 2131361818;
 			
-			// aapt resource value: 0x7f0a00cc
-			public const int time = 2131361996;
+			// aapt resource value: 0x7f0a00d0
+			public const int time = 2131362000;
 			
 			// aapt resource value: 0x7f0a0023
 			public const int title = 2131361827;
@@ -7887,14 +7899,14 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a001b
 			public const int view_offset_helper = 2131361819;
 			
-			// aapt resource value: 0x7f0a00c2
-			public const int viewpager = 2131361986;
+			// aapt resource value: 0x7f0a00c6
+			public const int viewpager = 2131361990;
 			
-			// aapt resource value: 0x7f0a00d5
-			public const int visible = 2131362005;
+			// aapt resource value: 0x7f0a00d9
+			public const int visible = 2131362009;
 			
-			// aapt resource value: 0x7f0a00d4
-			public const int webView = 2131362004;
+			// aapt resource value: 0x7f0a00d8
+			public const int webView = 2131362008;
 			
 			// aapt resource value: 0x7f0a0045
 			public const int withText = 2131361861;
@@ -8143,58 +8155,67 @@ namespace CrossNews.Droid
 			public const int home_view = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int mtrl_layout_snackbar = 2130968623;
+			public const int license_list_header = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int mtrl_layout_snackbar_include = 2130968624;
+			public const int license_list_item = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int newsroot_view = 2130968625;
+			public const int licenses_view = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int notification_action = 2130968626;
+			public const int mtrl_layout_snackbar = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int notification_action_tombstone = 2130968627;
+			public const int mtrl_layout_snackbar_include = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int notification_template_custom_big = 2130968628;
+			public const int newsroot_view = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int notification_template_icon_group = 2130968629;
+			public const int notification_action = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int notification_template_part_chronometer = 2130968630;
+			public const int notification_action_tombstone = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int notification_template_part_time = 2130968631;
+			public const int notification_template_custom_big = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int select_dialog_item_material = 2130968632;
+			public const int notification_template_icon_group = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int select_dialog_multichoice_material = 2130968633;
+			public const int notification_template_part_chronometer = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int select_dialog_singlechoice_material = 2130968634;
+			public const int notification_template_part_time = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int settings_view = 2130968635;
+			public const int select_dialog_item_material = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int splash_screen = 2130968636;
+			public const int select_dialog_multichoice_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int stories_view = 2130968637;
+			public const int select_dialog_singlechoice_material = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int story_list_item = 2130968638;
+			public const int settings_view = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int story_view = 2130968639;
+			public const int splash_screen = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int support_simple_spinner_dropdown_item = 2130968640;
+			public const int stories_view = 2130968640;
+			
+			// aapt resource value: 0x7f040041
+			public const int story_list_item = 2130968641;
+			
+			// aapt resource value: 0x7f040042
+			public const int story_view = 2130968642;
+			
+			// aapt resource value: 0x7f040043
+			public const int support_simple_spinner_dropdown_item = 2130968643;
 			
 			static Layout()
 			{

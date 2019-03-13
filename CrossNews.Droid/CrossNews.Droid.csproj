@@ -65,9 +65,11 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DroidDialogService.cs" />
+    <Compile Include="Services\DroidPlatformLicenseList.cs" />
     <Compile Include="Services\DroidReachabilityService.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
+    <Compile Include="Views\LicensesView.cs" />
     <Compile Include="Views\NewsRootView.cs" />
     <Compile Include="Views\NewsView.cs" />
     <Compile Include="Views\SettingsView.cs" />
@@ -173,6 +175,17 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\settings_view.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\licenses_view.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\license_list_item.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\license_list_header.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

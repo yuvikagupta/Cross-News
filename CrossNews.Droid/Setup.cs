@@ -23,6 +23,7 @@ namespace CrossNews.Droid
         {
             base.InitializeLastChance();
             var ioc = Mvx.IoCProvider;
+            ioc.RegisterSingleton<IPlatformLicenseList>(new DroidPlatformLicenseList());
             ioc.ConstructAndRegisterSingleton<IReachabilityService, DroidReachabilityService>();
         }
     }
