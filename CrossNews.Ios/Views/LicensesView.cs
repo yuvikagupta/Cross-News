@@ -68,7 +68,10 @@ namespace CrossNews.Ios.Views
         [Export("tableView:didSelectRowAtIndexPath:")]
         public void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            var item = ViewModel.CoreLicenses[(int)indexPath.Item];
+            var collection = indexPath.Section == 0
+                ? ViewModel.CoreLicenses
+                : ViewModel.PlatformLicenses;
+            var item = collection[(int)indexPath.Item];
 
             ViewModel.ShowLicense.TryExecute(item);
         }
