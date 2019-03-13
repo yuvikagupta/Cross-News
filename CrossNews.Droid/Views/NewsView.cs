@@ -1,4 +1,6 @@
-﻿using Android.OS;
+﻿using System.Collections.Specialized;
+using System.ComponentModel;
+using Android.OS;
 using Android.Views;
 using CrossNews.Core.ViewModels;
 using CrossNews.Droid.Common;
@@ -11,6 +13,8 @@ namespace CrossNews.Droid.Views
 {
     public abstract class NewsView<T> : MvxFragment<T> where T : NewsViewModel
     {
+        private MvxSwipeRefreshLayout _refreshLayout;
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
@@ -18,8 +22,21 @@ namespace CrossNews.Droid.Views
             var view = this.BindingInflate(Resource.Layout.stories_view, null);
             var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.storiesRecyclerView);
             recyclerView.AddItemDecoration(new LineDividerItemDecoration(Activity));
+            _refreshLayout = view.FindViewById<MvxSwipeRefreshLayout>(Resource.Id.refresh_layout);
+
+            ViewModel.Stories.CollectionChanged += OnStoriesCollectionChanged;
 
             return view;
+        }
+
+        private void OnStoriesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action != NotifyCollectionChangedAction.Reset)
+            {
+                return;
+            }
+
+            _refreshLayout.Refreshing = false;
         }
     }
 

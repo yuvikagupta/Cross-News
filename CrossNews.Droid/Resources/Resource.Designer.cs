@@ -7329,8 +7329,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a007a
 			public const int action_mode_close_button = 2131361914;
 			
-			// aapt resource value: 0x7f0a00db
-			public const int action_settings = 2131362011;
+			// aapt resource value: 0x7f0a00dc
+			public const int action_settings = 2131362012;
 			
 			// aapt resource value: 0x7f0a00c9
 			public const int action_text = 2131361993;
@@ -7581,8 +7581,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a00c3
 			public const int main_content = 2131361987;
 			
-			// aapt resource value: 0x7f0a00da
-			public const int masked = 2131362010;
+			// aapt resource value: 0x7f0a00db
+			public const int masked = 2131362011;
 			
 			// aapt resource value: 0x7f0a00ab
 			public const int message = 2131361963;
@@ -7658,6 +7658,9 @@ namespace CrossNews.Droid
 			
 			// aapt resource value: 0x7f0a0096
 			public const int radio = 2131361942;
+			
+			// aapt resource value: 0x7f0a00d7
+			public const int refresh_layout = 2131362007;
 			
 			// aapt resource value: 0x7f0a0057
 			public const int right = 2131361879;
@@ -7788,8 +7791,8 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a0058
 			public const int start = 2131361880;
 			
-			// aapt resource value: 0x7f0a00d7
-			public const int storiesRecyclerView = 2131362007;
+			// aapt resource value: 0x7f0a00d8
+			public const int storiesRecyclerView = 2131362008;
 			
 			// aapt resource value: 0x7f0a005d
 			public const int stretch = 2131361885;
@@ -7902,11 +7905,11 @@ namespace CrossNews.Droid
 			// aapt resource value: 0x7f0a00c6
 			public const int viewpager = 2131361990;
 			
-			// aapt resource value: 0x7f0a00d9
-			public const int visible = 2131362009;
+			// aapt resource value: 0x7f0a00da
+			public const int visible = 2131362010;
 			
-			// aapt resource value: 0x7f0a00d8
-			public const int webView = 2131362008;
+			// aapt resource value: 0x7f0a00d9
+			public const int webView = 2131362009;
 			
 			// aapt resource value: 0x7f0a0045
 			public const int withText = 2131361861;
