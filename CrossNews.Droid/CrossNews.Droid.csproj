@@ -61,6 +61,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\IncrementalLoadingAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,7 +77,6 @@
     <Compile Include="Views\StoryView.cs" />
     <Compile Include="Services\DroidBrowserService.cs" />
     <Compile Include="Services\DroidShareService.cs" />
-    <Compile Include="Common\LineDividerItemDecoration.cs" />
     <Compile Include="Services\DroidAppService.cs" />
     <Compile Include="Services\DroidPlatformFeatureOverlay.cs" />
   </ItemGroup>

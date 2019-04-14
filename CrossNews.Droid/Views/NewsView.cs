@@ -1,9 +1,9 @@
 ﻿using System.Collections.Specialized;
-using System.ComponentModel;
 using Android.OS;
+using Android.Support.V7.Widget;
 using Android.Views;
 using CrossNews.Core.ViewModels;
-using CrossNews.Droid.Common;
+using CrossNews.Droid.Adapters;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
@@ -21,7 +21,13 @@ namespace CrossNews.Droid.Views
 
             var view = this.BindingInflate(Resource.Layout.stories_view, null);
             var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.storiesRecyclerView);
-            recyclerView.AddItemDecoration(new LineDividerItemDecoration(Activity));
+            recyclerView.AddItemDecoration(new DividerItemDecoration(recyclerView.Context, DividerItemDecoration.Vertical));
+
+            if (ViewModel.IncrementalLoading)
+            {
+                recyclerView.Adapter = new IncrementalLoadingAdapter((IMvxAndroidBindingContext) BindingContext);
+            }
+
             _refreshLayout = view.FindViewById<MvxSwipeRefreshLayout>(Resource.Id.refresh_layout);
 
             ViewModel.Stories.CollectionChanged += OnStoriesCollectionChanged;

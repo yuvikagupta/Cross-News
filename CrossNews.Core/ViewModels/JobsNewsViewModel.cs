@@ -12,8 +12,9 @@ namespace CrossNews.Core.ViewModels
             , IReachabilityService reachability
             , IFeatureStore featureStore
             , IBrowserService browser
-            , IDialogService dialog)
-            : base(navigation, messenger, news, reachability, featureStore, browser, dialog)
+            , IDialogService dialog
+            , IIncrementalCollectionFactory incrementalCollectionFactory)
+            : base(navigation, messenger, news, reachability, featureStore, browser, dialog, incrementalCollectionFactory)
         {
         }
 

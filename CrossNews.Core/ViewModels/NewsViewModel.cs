@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -20,9 +21,9 @@ namespace CrossNews.Core.ViewModels
         private readonly IMvxMessenger _messenger;
         private readonly INewsService _news;
         private readonly IReachabilityService _reachability;
-        private readonly IFeatureStore _featureStore;
         private readonly IBrowserService _browser;
         private readonly IDialogService _dialog;
+        private readonly IIncrementalCollectionFactory _incrementalCollectionFactory;
 
         private readonly MvxSubscriptionToken _fillerToken;
 
@@ -30,6 +31,11 @@ namespace CrossNews.Core.ViewModels
 
         protected abstract StoryKind StoryKind { get; }
         public bool TabPresentation { get; }
+        public bool IncrementalLoading { get; }
+        private bool CustomBrowser { get; }
+
+        private List<int> _ids;
+        private int _idIndex = 0;
 
         protected NewsViewModel(IMvxNavigationService navigation
             , IMvxMessenger messenger
@@ -37,17 +43,31 @@ namespace CrossNews.Core.ViewModels
             , IReachabilityService reachability
             , IFeatureStore featureStore
             , IBrowserService browser
-            , IDialogService dialog)
+            , IDialogService dialog
+            , IIncrementalCollectionFactory incrementalCollectionFactory)
         {
             _navigation = navigation;
             _messenger = messenger;
             _news = news;
             _reachability = reachability;
-            _featureStore = featureStore;
             _browser = browser;
             _dialog = dialog;
+            _incrementalCollectionFactory = incrementalCollectionFactory;
 
-            _stories = new MvxObservableCollection<StoryItemViewModel>();
+            IncrementalLoading = featureStore.IsEnabled(Features.IncrementalLoading);
+            CustomBrowser = featureStore.IsEnabled(Features.OpenStoryInCustomBrowser);
+            TabPresentation = featureStore.IsEnabled(Features.StoryTabPresentation);
+
+            if (IncrementalLoading)
+            {
+                var source = _incrementalCollectionFactory.Create(OnIncrementalLoad);
+                // On hindsight, having to rely on this sounds like a big hack
+                _stories = (MvxObservableCollection<StoryItemViewModel>) source;
+            }
+            else
+            {
+                _stories = new MvxObservableCollection<StoryItemViewModel>();
+            }
 
             ShowStoryCommand = new MvxAsyncCommand<StoryItemViewModel>(OnShowStory, item => item.Filled && item.Story.Type == ItemType.Story);
             RefreshCommand = new MvxAsyncCommand(LoadStories);
@@ -55,8 +75,35 @@ namespace CrossNews.Core.ViewModels
             ShowSettingsCommand = new MvxAsyncCommand(() => _navigation.Navigate<SettingsViewModel>());
 
             _fillerToken = messenger.Subscribe<NewsItemMessage>(OnItemReceived);
+        }
 
-            TabPresentation = featureStore.IsEnabled(Features.StoryTabPresentation);
+        private Task<IList<StoryItemViewModel>> OnIncrementalLoad(int count)
+        {
+            lock (_ids)
+            {
+                Debug.WriteLine($"Load {GetType().Name} - {_idIndex} - {count}");
+                IsBusy = true;
+                var ids = _ids
+                    .Skip(_idIndex)
+                    .Take(count)
+                    .ToList();
+                
+                var items = ids
+                    .Select((x, i) => new StoryItemViewModel(x, i + _idIndex))
+                    .ToList();
+
+                _stories.AddRange(items);
+                foreach (var item in items)
+                {
+                    _storyLookup[item.Id] = item;
+                }
+
+                _news.EnqueueItems(ids);
+
+                _idIndex += count;
+                IsBusy = false;
+                return Task.FromResult((IList<StoryItemViewModel>) items);
+            }
         }
 
         public override async Task Initialize()
@@ -94,19 +141,34 @@ namespace CrossNews.Core.ViewModels
 
         private Task LoadStories()
         {
-            async Task LoadAsync()
+            async Task LoadAllAsync()
             {
                 IsBusy = true;
-                var ids = await _news.GetStoryListAsync(StoryKind);
-                var items = ids.Select((x, i) => new StoryItemViewModel(x, i)).ToList();
+                _ids = await _news.GetStoryListAsync(StoryKind);
+                var items = _ids.Select((x, i) => new StoryItemViewModel(x, i)).ToList();
 
                 _stories.Clear();
                 _stories.AddRange(items);
                 _storyLookup = items.ToDictionary(i => i.Id);
 
-                _news.EnqueueItems(ids.ToList());
+                _news.EnqueueItems(_ids.ToList());
                 IsBusy = false;
             }
+
+            async Task LoadInitialAsync()
+            {
+                IsBusy = true;
+                _ids = await _news.GetStoryListAsync(StoryKind);
+                _stories.Clear();
+                _storyLookup = new Dictionary<int, StoryItemViewModel>();
+                _idIndex = 0;
+
+                await OnIncrementalLoad(30);
+            }
+
+            Task LoadAsync() => IncrementalLoading
+                    ? LoadInitialAsync()
+                    : LoadAllAsync();
 
             var notifyTask = _reachability.IsConnectionAvailable
                 ? MvxNotifyTask.Create(LoadAsync)
@@ -118,7 +180,7 @@ namespace CrossNews.Core.ViewModels
 
         private Task OnShowStory(StoryItemViewModel item)
         {
-            return _featureStore.IsEnabled(Features.OpenStoryInCustomBrowser)
+            return CustomBrowser
                 ? _navigation.Navigate<StoryViewModel, IStory>(item.Story)
                 : _browser.ShowInBrowserAsync(new Uri(item.Story.Url), true);
         }

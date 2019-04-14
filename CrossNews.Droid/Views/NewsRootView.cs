@@ -3,9 +3,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using CrossNews.Core.Extensions;
 using CrossNews.Core.ViewModels;
-using CrossNews.Droid.Common;
 using MvvmCross.Droid.Support.V7.AppCompat;
-using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace CrossNews.Droid.Views

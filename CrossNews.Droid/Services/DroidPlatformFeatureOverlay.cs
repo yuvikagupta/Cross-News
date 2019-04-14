@@ -10,6 +10,7 @@ namespace CrossNews.Droid.Services
         {
             [OpenStoryInCustomBrowser] = Never,
             [StoryTabPresentation] = Always,
+            [IncrementalLoading] = OnlyDebug
         };
     }
 }

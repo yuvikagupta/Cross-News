@@ -12,7 +12,7 @@ namespace CrossNews.Core.Services
                 [OpenStoryInCustomBrowser] = Always,
                 [ShowOverrideUi] = OnlyDebug,
                 [StoryTabPresentation] = OnlyDebug,
-                
+                [IncrementalLoading] = Never,
             };
         }
 

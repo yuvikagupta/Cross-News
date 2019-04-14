@@ -15,7 +15,8 @@ namespace CrossNews.Core
             ioc.RegisterSingleton<IFeatureProvider>(new FeatureProvider());
             ioc.LazyConstructAndRegisterSingleton<IFeatureStore, FeatureStoreService>();
             ioc.RegisterSingleton<ICacheService>(new InMemoryCacheService());
-            ioc.LazyConstructAndRegisterSingleton<INewsService, NewsService>();
+            ioc.LazyConstructAndRegisterSingleton<INewsService, CrudeNewsService>();
+            ioc.RegisterSingleton<IIncrementalCollectionFactory>(new IncrementalCollectionFactory());
 
             RegisterCustomAppStart<CrossNewsAppStart>();
         }
